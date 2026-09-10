@@ -1,3 +1,9 @@
+// ============================================================================
+// OFERTAS CURADAS A MANO por Ali: relevadas directamente de las bolsas propias
+// de cada consultora (mail, portal propio, LinkedIn). Complementan a las
+// fuentes en vivo y el motor de matching les calcula el % como al resto.
+// Dato estructurado y ordenado por región.
+// ============================================================================
 // Ofertas relevadas a mano (bolsas propias de cada consultora: mail, portal
 // propio, LinkedIn). No salen de las fuentes remotas escaneadas; se agregan
 // manualmente a su país (región). Cada entrada incluye el texto de la vacante
@@ -73,6 +79,104 @@ export const CURATED_JOBS = [
     tags: ['quality', 'test', 'javascript', 'sql', 'agile', 'azure devops', 'ci/cd'],
     salary: '',
     date: '2026-09-01',
+  },
+  {
+    id: 'curated-ar-aliantum-tester-focal',
+    source: 'Directo (Aliantum)',
+    title: 'Tester Focal Point (QA / Testing Lead Operativo)',
+    company: 'Aliantum',
+    location: 'CABA, Argentina',
+    regionGuess: 'argentina',
+    applyUrl: 'https://www.aliantum.com.ar/jobs/tester-focal-point-8',
+    description:
+      'Aliantum (consultora IA First especializada en el sector financiero LATAM) busca Focal Point de Testing: referente central de testing como nexo entre el cliente, el equipo de desarrollo y stakeholders. Ordena, prioriza, da visibilidad y toma decisiones operativas de QA. Responsabilidades: definir la estrategia de testing (funcional, regresión, smoke, UAT), analizar requerimientos, diseñar y supervisar casos de prueba, coordinar backlog de bugs, validar go / no go a producción, trazabilidad requerimiento → caso de prueba → defecto y acompañar UAT. Requisitos: experiencia como Tester/QA, manejo de Jira, Azure DevOps, TestRail o similares, conocimiento de Core Banking BANTOTAL, y disponibilidad para viajar y estar presencial en el cliente (excluyente). Deseable: entornos bancarios/fintech, SQL, APIs, metodologías ágiles (Scrum/Kanban) y experiencia como referente o lead informal de testing.',
+    tags: ['qa', 'tester', 'test lead', 'testing', 'functional testing', 'regression', 'uat', 'bantotal', 'core banking', 'jira', 'azure devops', 'testrail', 'agile', 'scrum', 'kanban'],
+    salary: '',
+    date: '2026-09-08',
+  },
+  {
+    id: 'curated-ar-decampoacampo-qa-auto',
+    source: 'Directo (deCampoaCampo)',
+    title: 'QA Automation Ssr/Senior (Cypress)',
+    company: 'deCampoaCampo',
+    location: 'CABA/GBA (1 día presencial) o 100% remoto (interior)',
+    regionGuess: 'argentina',
+    applyUrl: 'https://lnkd.in/djFuZr5d',
+    description:
+      'deCampoaCampo (mercado ganadero digital más grande de Argentina, agtech) busca QA Automation Ssr/Senior con experiencia en Cypress y JavaScript. Esquema: CABA/GBA con 1 día presencial en la oficina de CABA, o 100% remoto para candidatos del interior del país. Postulación a través del link del anuncio o por mail a rrhh@decampoacampo.com. Otras búsquedas en su portal de empleos.',
+    tags: ['qa automation', 'automation', 'cypress', 'javascript', 'testing', 'regression', 'agile'],
+    salary: '',
+    date: '2026-09-08',
+  },
+  {
+    id: 'curated-ar-gestal-tester-sr',
+    source: 'Directo (Consultora Gestal)',
+    title: 'Tester Senior / QA Automation',
+    company: 'Consultora Gestal (bolsa de empleo)',
+    location: 'Argentina (100% Remoto)',
+    regionGuess: 'argentina',
+    applyUrl: 'https://www.consultoragestal.com/bolsa-de-trabajo/',
+    description:
+      'Búsqueda activa de Consultora Gestal: Tester Senior / QA Automation 100% remoto, full time lunes a viernes, modalidad monotributo en Argentina. Requisitos: automatización de pruebas de Frontend y APIs, conocimientos de SQL y de programación, y uso de herramientas de IA aplicadas al testing. No piden experiencia en una herramienta de testing específica: priorizan base técnica y capacidad de adaptación. Ofrecen 100% remoto, prepaga, vacaciones pagas y crecimiento. Postulación por mail a jtrecco@consultoragestal.com.',
+    tags: ['qa', 'qa automation', 'automation', 'api testing', 'frontend testing', 'sql', 'testing', 'ai', 'ia'],
+    salary: '',
+    date: '2026-09-08',
+  },
+  {
+    id: 'curated-ar-contraluz-qa-ai-agents',
+    source: 'Directo (Consultora Contraluz)',
+    title: 'QA Automation Engineer – AI & Agentic Systems',
+    company: 'Consultora Contraluz',
+    location: 'Argentina (100% Remoto)',
+    regionGuess: 'argentina',
+    applyUrl: 'https://www.consultoracontraluz.com.ar',
+    description:
+      'Búsqueda de Consultora Contraluz para un cliente: QA Automation Engineer especializado en AI & Agentic Systems, 100% remoto desde Argentina, modalidad contractor con remuneración en dólares (3k USD). Inglés conversacional fluido excluyente. Requisitos: 2+ años como QA Automation/Test Automation, experiencia comprobable en testing de Agentes de IA y/o sistemas basados en LLM, programación en Python y/o TypeScript, automatización de navegador (Playwright, Selenium, Puppeteer), API testing, suites automatizadas, debugging, CI/CD (GitHub Actions, Jenkins, GitLab CI), análisis de logs/trazas/llamadas de red y métricas de calidad (Grafana, Kibana, Power BI). Trabajo con resultados variables o no determinísticos. Enviar CV a rrhh@consultoracontraluz.com.ar con asunto "QA Automation Engineer AI & Agentic Systems".',
+    tags: ['qa automation', 'automation', 'ai', 'ia', 'llm', 'agents', 'agentic', 'python', 'typescript', 'playwright', 'selenium', 'puppeteer', 'api testing', 'ci/cd', 'github actions', 'jenkins', 'gitlab ci', 'grafana', 'kibana'],
+    salary: '3k USD',
+    date: '2026-09-08',
+  },
+  {
+    id: 'curated-ar-nttdata-qa-automatizador',
+    source: 'Reclutador (LinkedIn)',
+    title: 'QA Automatizador (NTT DATA)',
+    company: 'NTT DATA',
+    location: 'Argentina',
+    regionGuess: 'argentina',
+    applyUrl: '',
+    description:
+      'NTT DATA busca perfiles de QA Automatizador para un nuevo proyecto. Requisitos: egresado/a de carrera técnica o universitaria en Sistemas/Informática o afines; experiencia en automatización de pruebas; experiencia con Karate para automatización de APIs; Java y/o Python; Selenium, Cucumber, Appium y/o Gherkin; Git, Postman, REST Assured, Jira y Confluence; metodologías ágiles. ISTQB Foundation es un plus. Importante: buscan personas que no hayan trabajado anteriormente en NTT DATA. Postulación por DM con el reclutador (publicación #Hiring #QAAutomation #Testing).',
+    tags: ['qa automation', 'automation', 'karate', 'api testing', 'java', 'python', 'selenium', 'cucumber', 'appium', 'gherkin', 'test automation', 'istqb', 'jira', 'agile'],
+    salary: '',
+    date: '2026-09-08',
+  },
+  {
+    id: 'curated-ar-qa-sr-js-webdriverio',
+    source: 'Reclutador (LinkedIn)',
+    title: 'Sr. QA Automation Engineer (JavaScript)',
+    company: 'Confidencial (AR/CO/MX/BR)',
+    location: 'Argentina (100% Remoto)',
+    regionGuess: 'argentina',
+    applyUrl: '',
+    description:
+      'Sr. QA Automation Engineer (JavaScript) para un proyecto global en crecimiento, 100% remoto (AR/CO/MX/BR). Requisitos: +5 años en Quality Testing, +3 años en QA Automation, pipelines CI/CD (CircleCI preferido), automatización frontend con JavaScript + WebdriverIO, automatización backend, diseño orientado a objetos y bases de datos relacionales y no relacionales. Qué vas a hacer: liderar la calidad end-to-end, diseñar y mantener suites de automatización frontend/backend, coordinar releases completos (go/no-go, sanity checks post-deploy), visibilidad de cobertura/riesgos, proponer mejoras y roadmap de calidad. Postulación por MD (publicación #QA #Automation #SDET #JavaScript #WebdriverIO).',
+    tags: ['qa automation', 'automation', 'sdet', 'javascript', 'webdriverio', 'ci/cd', 'circleci', 'frontend testing', 'api testing', 'backend testing', 'release management'],
+    salary: '',
+    date: '2026-09-08',
+  },
+  {
+    id: 'curated-ar-link-automation-tester',
+    source: 'Directo (link)',
+    title: 'Automation Tester Sr (POS - Backend)',
+    company: 'link',
+    location: 'Buenos Aires (Híbrido, zona Luna Park)',
+    regionGuess: 'argentina',
+    applyUrl: 'https://lnkd.in/dpVqvFhm',
+    description:
+      'link (Red Link S.A., ecosistema financiero/pagos) busca Automation Tester POS - Backend para el equipo de Procesamiento Adquirente. Objetivo: generar, ejecutar y automatizar planes de prueba (código evolutivo y regresión) garantizando calidad, estabilidad y seguridad en la integración de medios de pago. Requisitos: graduado/a, promediando o finalizando Ingeniería en Sistemas o afines; 3 a 5+ años en posiciones similares en medios de pago y/o servicios financieros; programación y automatización de pruebas; API REST y modelado de bases de datos; documentación técnico-funcional. Deseable: sistemas de cobro sobre dispositivos POS y PinPad, flujos de pagos adquirentes, normativas (PCI, Banco Central, EMVCo) y certificaciones (Integración, L3, PCI). Ofrecen híbrido, bono anual, revisiones salariales y medicina prepaga. Postular en el link.',
+    tags: ['qa automation', 'automation', 'api testing', 'rest', 'pos', 'pinpad', 'payments', 'medios de pago', 'adquirencia', 'backend testing', 'emvco', 'pci', 'banca'],
+    salary: '',
+    date: '2026-09-08',
   },
 
   // ============ MÉXICO ============
@@ -216,6 +320,34 @@ export const CURATED_JOBS = [
     salary: '',
     date: '2026-09-01',
   },
+  {
+    id: 'curated-mx-qa-sr-js-webdriverio',
+    source: 'Reclutador (LinkedIn)',
+    title: 'Sr. QA Automation Engineer (JavaScript)',
+    company: 'Confidencial (AR/CO/MX/BR)',
+    location: 'México (100% Remoto)',
+    regionGuess: 'mexico',
+    applyUrl: '',
+    description:
+      'Sr. QA Automation Engineer (JavaScript) para un proyecto global en crecimiento, 100% remoto (AR/CO/MX/BR). Requisitos: +5 años en Quality Testing, +3 años en QA Automation, pipelines CI/CD (CircleCI preferido), automatización frontend con JavaScript + WebdriverIO, automatización backend, diseño orientado a objetos y bases de datos relacionales y no relacionales. Qué vas a hacer: liderar la calidad end-to-end, diseñar y mantener suites de automatización frontend/backend, coordinar releases completos (go/no-go, sanity checks post-deploy), visibilidad de cobertura/riesgos, proponer mejoras y roadmap de calidad. Postulación por MD (publicación #QA #Automation #SDET #JavaScript #WebdriverIO).',
+    tags: ['qa automation', 'automation', 'sdet', 'javascript', 'webdriverio', 'ci/cd', 'circleci', 'frontend testing', 'api testing', 'backend testing', 'release management'],
+    salary: '',
+    date: '2026-09-08',
+  },
+  {
+    id: 'curated-mx-qa-mid-manual-technical',
+    source: 'Reclutador (LinkedIn)',
+    title: 'Quality Assurance Engineer Mid (Manual + Técnico)',
+    company: 'Confidencial (México)',
+    location: 'México (100% Remoto)',
+    regionGuess: 'mexico',
+    applyUrl: '',
+    description:
+      'Quality Assurance Engineer Mid para equipo de ingeniería con foco en QA manual y profundidad técnica (no es QA manual tradicional ni Automation Engineer puro). Mayor parte del trabajo: functional y regression testing, validación de funcionalidades, seguimiento de bugs y exploración de escenarios. También: APIs REST con Postman, Git, Linux/Unix y línea de comandos, revisión de logs, levantar servicios, entender backend y desenvolverse en CI/CD; automatización con Cypress (entender, ejecutar, mantener y ampliar una suite existente). Requisitos: 2+ años de experiencia en QA, functional/regression testing sólido, API testing con Postman, comodidad con Terminal, Linux/Unix, Git, test automation (idealmente Cypress), leer/depurar código y automatizaciones sencillas; Ruby, JavaScript/TypeScript o Python suman; inglés avanzado/bilingüe para trabajar con equipos en USA. Condiciones: 100% remoto desde México (preferencia Apodaca/Monterrey pero no excluyente), contratación directa, tiempo indeterminado, horario ~8:30-16:30 Mountain Time, 21 días de aguinaldo, vales de despensa, fondo de ahorro y seguros médicos. Postulación por DM con CV en inglés.',
+    tags: ['qa', 'manual testing', 'functional testing', 'regression', 'api testing', 'postman', 'cypress', 'git', 'linux', 'unix', 'ci/cd', 'automation', 'test automation', 'javascript', 'python', 'ruby'],
+    salary: '',
+    date: '2026-09-08',
+  },
 
   // ============ PERÚ ============
   {
@@ -333,6 +465,48 @@ export const CURATED_JOBS = [
     date: '2026-09-01',
   },
   {
+    id: 'curated-co-htqa-fabrica-pruebas',
+    source: 'Directo (HTQA)',
+    title: 'QA Engineer – Fábrica de Pruebas (Java/Python, Spark, Ab Initio, PL/SQL)',
+    company: 'HTQA – Human Team Technology QA',
+    location: 'Bogotá, Colombia',
+    regionGuess: 'colombia',
+    applyUrl: 'https://www.htqasas.com',
+    description:
+      'HTQA (Human Team Technology QA, Bogotá) busca profesionales QA con experiencia real y comprobable en tecnologías específicas: Java + Python, Apache Spark, Ab Initio y PL/SQL, según cada vacante. No buscan un QA generalista: piden coincidencia del 100% con la tecnología solicitada de su Fábrica de Pruebas. Enviar CV a rrhh@htqasas.com o kdelgado@htqasas.com.',
+    tags: ['qa', 'java', 'python', 'apache spark', 'ab initio', 'pl/sql', 'big data', 'testing', 'data', 'etl'],
+    salary: '',
+    date: '2026-09-08',
+  },
+  {
+    id: 'curated-co-capgemini-qa-spark-plsql',
+    source: 'Capgemini (LinkedIn)',
+    title: 'QA Funcional Spark PL/SQL Sr',
+    company: 'Capgemini',
+    location: 'Colombia (100% Remoto)',
+    regionGuess: 'colombia',
+    applyUrl: 'https://www.capgemini.com/co-es/',
+    description:
+      'Capgemini busca QA Funcional Spark PL/SQL Sr, modalidad 100% remoto, contrato a término fijo por 3 meses. Requisitos: 4+ años de experiencia en pruebas de software, pruebas funcionales, Spark, PL/SQL, servicios REST y SOAP, JMeter, SoapUI, Postman y Appium. Postulación a través de la publicación o compartiendo la oportunidad.',
+    tags: ['qa', 'functional testing', 'spark', 'pl/sql', 'rest', 'soap', 'jmeter', 'soapui', 'postman', 'appium', 'manual testing'],
+    salary: '',
+    date: '2026-09-08',
+  },
+  {
+    id: 'curated-co-qa-sr-js-webdriverio',
+    source: 'Reclutador (LinkedIn)',
+    title: 'Sr. QA Automation Engineer (JavaScript)',
+    company: 'Confidencial (AR/CO/MX/BR)',
+    location: 'Colombia (100% Remoto)',
+    regionGuess: 'colombia',
+    applyUrl: '',
+    description:
+      'Sr. QA Automation Engineer (JavaScript) para un proyecto global en crecimiento, 100% remoto (AR/CO/MX/BR). Requisitos: +5 años en Quality Testing, +3 años en QA Automation, pipelines CI/CD (CircleCI preferido), automatización frontend con JavaScript + WebdriverIO, automatización backend, diseño orientado a objetos y bases de datos relacionales y no relacionales. Qué vas a hacer: liderar la calidad end-to-end, diseñar y mantener suites de automatización frontend/backend, coordinar releases completos (go/no-go, sanity checks post-deploy), visibilidad de cobertura/riesgos, proponer mejoras y roadmap de calidad. Postulación por MD (publicación #QA #Automation #SDET #JavaScript #WebdriverIO).',
+    tags: ['qa automation', 'automation', 'sdet', 'javascript', 'webdriverio', 'ci/cd', 'circleci', 'frontend testing', 'api testing', 'backend testing', 'release management'],
+    salary: '',
+    date: '2026-09-08',
+  },
+  {
     id: 'curated-co-qa-auto-ai-llm',
     source: 'Reclutador (LinkedIn)',
     title: 'QA Automation Engineer (AI / LLM)',
@@ -375,5 +549,19 @@ export const CURATED_JOBS = [
     tags: ['qa', 'analista qa', 'qa automation', 'testing', 'javascript', 'python', 'scrum', 'rest', 'test automation'],
     salary: '',
     date: '2026-09-01',
+  },
+  {
+    id: 'curated-cl-socius-qa-auto',
+    source: 'Directo (SOCIUS)',
+    title: 'QA Automatizador Semi Senior',
+    company: 'SOCIUS',
+    location: 'Santiago, Chile (Híbrido)',
+    regionGuess: 'chile',
+    applyUrl: 'https://lnkd.in/d2yVy8qU',
+    description:
+      'SOCIUS busca QA Automatizador Semi Senior (híbrido, Santiago de Chile), proyecto largo plazo, 3 vacantes. Qué harás: diseñar, desarrollar y mantener pruebas automatizadas; ejecutar pruebas funcionales, de APIs y performance; integrar pruebas en pipelines CI/CD; analizar resultados, documentar incidencias y hacer seguimiento de defectos. Qué buscan: automatización con Selenium, Cucumber y/o Karate, pruebas de APIs con Postman, SQL para validación de datos, GitHub y/o Jenkins, performance con JMeter y/o BlazeMeter, metodologías ágiles. Plus: BrowserStack, Azure, CyberArk o IntelliJ, certificación ISTQB y uso de IA (Copilot, PraIA). Aplicar en el link.',
+    tags: ['qa automation', 'automation', 'selenium', 'cucumber', 'karate', 'api testing', 'postman', 'sql', 'github', 'jenkins', 'jmeter', 'blazemeter', 'performance testing', 'agile', 'browserstack', 'istqb', 'ai'],
+    salary: '',
+    date: '2026-09-08',
   },
 ];

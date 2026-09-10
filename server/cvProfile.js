@@ -1,3 +1,9 @@
+// ============================================================================
+// PERFIL DE ALI TOVAR (QA Engineer): la "fuente de verdad" del buscador.
+// Define los skills que domina (con su peso), los keywords de búsqueda, los
+// skills del mercado para detectar brechas y las regiones con su idioma.
+// El motor de matching y la analítica se apoyan en estos datos.
+// ============================================================================
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
@@ -17,6 +23,7 @@ const PROFILE = {
   github: 'https://github.com/avtovar',
 
   // Skills con pesos (0-1) para calcular el match
+  // ↑ skills: tecnologías que Ali domina, con peso 0-1 según su importancia
   skills: {
     qa: 1,
     'manual testing': 1,
@@ -61,6 +68,7 @@ const PROFILE = {
   },
 
   // Prioridades de búsqueda (términos para filtrar/clasificar ofertas)
+  // ↑ keywords: términos con los que se filtra/clasifica cada oferta de QA
   keywords: [
     'qa',
     'quality assurance',
@@ -80,6 +88,7 @@ const PROFILE = {
   // Habilidades del MERCADO (lo que las ofertas suelen pedir) para detectar
   // "gaps": tecnologías requeridas por la vacante que el CV no posee.
   // Cada entrada: { name, aliases[], has: bool (si está en el CV) }
+  // ↑ marketSkills: lo que pide el mercado; has=false marca las brechas del CV
   marketSkills: [
     { name: 'cypress', aliases: ['cypress'], has: false },
     { name: 'playwright', aliases: ['playwright'], has: false },
@@ -128,6 +137,7 @@ const PROFILE = {
   ],
 
   // Regiones soportadas
+  // ↑ regions: cada región con label, idioma (es/en) y países relacionados
   regions: {
     argentina: {
       label: 'Argentina',

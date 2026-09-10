@@ -1,3 +1,8 @@
+// ============================================================================
+// OFERTAS DE EJEMPLO (demo): respaldo para cuando las fuentes en vivo fallan
+// o están bloqueadas. Así la app y todos sus endpoints funcionan SIEMPRE,
+// incluso sin conexión a las APIs de empleo. Dato estructurado, sin lógica.
+// ============================================================================
 // Datos de respaldo (demo) usados cuando las fuentes en vivo están bloqueadas.
 // Garantizan que la app y sus endpoints funcionen SIEMPRE, aunque no haya
 // conexión a las APIs de empleo. Contienen el formato completo (match incl.).

@@ -1,3 +1,9 @@
+// ============================================================================
+// DIRECTORIO DE CONSULTORAS QA: listado curado de software factories con
+// práctica en QA (manual y automation) en Argentina. Sirve de referencia para
+// el outreach; NO se scrapea ninguna fuente, son datos verificados a mano.
+// Dato estructurado: cada entrada es un objeto con id, nombre y contacto.
+// ============================================================================
 // Listado curado de consultoras/software factories/staffing con foco o
 // práctica de QA (manual & automation) en Argentina. Es un directorio de
 // referencia para outreach, no un feed en vivo: no se scrapea ninguna fuente,
@@ -55,7 +61,9 @@ export const CONSULTORAS = [
   { id: 'adecco-ar', name: 'Grupo Adecco Argentina (IT)', category: 'Staffing / recruiting IT', city: 'Buenos Aires', note: '', link: 'https://www.adecco.com.ar' },
   { id: 'manpower-ar', name: 'ManpowerGroup / Experis Argentina', category: 'Staffing / recruiting IT', city: 'Buenos Aires', note: '', link: 'https://ar.manpowergroup.com' },
   { id: 'sionix', name: 'Sionix', category: 'Staffing / recruiting IT', city: 'Godoy Cruz, Mendoza', note: 'Recruiting técnico especializado', link: 'https://clutch.co/profile/sionix' },
-  { id: 'grupo-assa', name: 'Grupo Assa', category: 'Staffing / recruiting IT', city: 'Buenos Aires', note: 'Consultora de RRHH/IT con selección de perfiles QA', link: 'https://www.grupoassa.com' },
+  { id: 'group-assa', name: 'Grupo Assa', category: 'Staffing / recruiting IT', city: 'Buenos Aires', note: 'Consultora de RRHH/IT con selección de perfiles QA', link: 'https://www.grupoassa.com' },
+  { id: 'gestal', name: 'Consultora Gestal', category: 'Staffing / recruiting IT', city: 'Córdoba', note: 'Selección/headhunting IT y búsquedas QA remotas (jtrecco@consultoragestal.com)', link: 'https://www.consultoragestal.com' },
+  { id: 'contraluz', name: 'Consultora Contraluz', category: 'Staffing / recruiting IT', city: 'CABA', note: 'Búsqueda y selección de personal IT; búsquedas QA en USD (rrhh@consultoracontraluz.com.ar)', link: 'https://www.consultoracontraluz.com.ar' },
 
   // ---- Ampliación a 100 consultoras ----
   { id: 'lemonit', name: 'LemonIT', category: 'Especializada en QA', city: 'Buenos Aires', note: 'QA y testing como servicio dedicado', link: 'https://clutch.co/profile/lemonit' },
@@ -84,6 +92,7 @@ export const CONSULTORAS = [
   { id: 'banco-galicia-qa', name: 'Banco Galicia (área IT)', category: 'Banco / Fintech / Billetera', city: 'CABA', note: 'QA en banca digital', link: 'https://www.bancogalicia.com.ar' },
   { id: 'banco-itau-qa', name: 'Itaú Argentina (área Tech)', category: 'Banco / Fintech / Billetera', city: 'CABA', note: 'QA en banca fintech', link: 'https://www.itau.com.ar' },
   { id: 'mereda', name: 'Mereda', category: 'Especializada en QA', city: 'Córdoba', note: 'QA automation para equipos remotos', link: 'https://mereda.dev' },
+  { id: 'htqa', name: 'HTQA (Human Team Technology QA)', category: 'Especializada en QA', city: 'Bogotá, Colombia', note: 'Fábrica de pruebas (QA/QC), staffing de QA y aseguramiento. Búsquedas por mail (rrhh@htqasas.com)', link: 'https://www.htqasas.com' },
 
   // ---- Bancos y billeteras (equipos de QA propios) ----
   { id: 'banco-nacion', name: 'Banco de la Nación Argentina', category: 'Banco / Fintech / Billetera', city: 'CABA', note: 'Banca pública con equipos de TI y aseguramiento de calidad', link: 'https://www.bna.com.ar' },

@@ -1,9 +1,20 @@
+// ============================================================================
+// Generador de cartas de presentación personalizadas. A partir de una oferta
+// y su región arma: el idioma (es/en), el asunto del mail, un resumen de la
+// empresa y el cuerpo de la carta listo para copiar y pegar.
+// ============================================================================
+
+// ↑ Trae el perfil de Ali (nombre, título, años de experiencia, LinkedIn)
 import { PROFILE } from './cvProfile.js';
+// ↑ Recalcula el match de la oferta para listar los skills que coinciden
 import { computeMatch } from './matcher.js';
 
 // Genera un resumen en una línea de la empresa y sus skills requeridos
+// ↑ Resumen breve: empresa, título, ubicación y top de skills que el CV cumple
 export function summarize(job) {
+  // ↑ Calcula el match de la oferta para conocer los skills coincidentes
   const match = computeMatch(job);
+  // ↑ Toma hasta 6 skills que coinciden (los usa el cuerpo de la carta)
   const skills = (match.matched || []).slice(0, 6);
   return {
     companySummary: `${job.company} (${job.source}) busca "${job.title}" en ${job.location}.`,
@@ -13,17 +24,20 @@ export function summarize(job) {
 }
 
 // Detecta el idioma de la carta según la región
+// ↑ Devuelve 'es' o 'en', según el idioma configurado para esa región
 function langForRegion(regionKey) {
   return (PROFILE.regions[regionKey] || {}).lang || 'es';
 }
 
 // Datos de la empresa para el encabezado de la carta
+// ↑ Solo renombra ciertas fuentes con su nombre de marca (para el encabezado)
 const COMPANIES = {
   'remoteok': 'RemoteOK',
   'weworkremotely': 'We Work Remotely',
 };
 
 // Cuerpo de la carta en español
+// ↑ Versión en español: usa el perfil y el resumen para armar el texto
 function bodyEs(job, sum) {
   return `Me dirijo a ustedes para postularme a la posición de "${job.title}" en ${job.company}.
 
@@ -40,6 +54,7 @@ ${PROFILE.location}`;
 }
 
 // Cuerpo de la carta en inglés
+// ↑ Misma carta pero traducida al inglés (para ofertas de otros países)
 function bodyEn(job, sum) {
   return `I am writing to apply for the position of "${job.title}" at ${job.company}.
 
@@ -56,10 +71,15 @@ ${PROFILE.location}`;
 }
 
 // Genera la carta completa según la región
+// ↑ Función principal: arma idioma, resumen, cuerpo y asunto de la carta
 export function generateCoverLetter(job, regionKey) {
+  // ↑ 1) Elige el idioma según la región de la oferta
   const lang = langForRegion(regionKey);
+  // ↑ 2) Arma el resumen de la empresa y los skills
   const sum = summarize(job);
+  // ↑ 3) Elige el cuerpo: inglés si la región lo pide, español en caso contrario
   const body = lang === 'en' ? bodyEn(job, sum) : bodyEs(job, sum);
+  // ↑ 4) Devuelve la carta completa; el asunto también cambia según el idioma
   return {
     lang,
     region: regionKey,

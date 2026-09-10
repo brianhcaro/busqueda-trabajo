@@ -1,49 +1,98 @@
+/* ============================================================================
+   styles.css — Hoja de estilos GLOBAL de la app "BuscaEmpleo"
+   ----------------------------------------------------------------------------
+   ¿Qué contiene? Todo el tema visual del frontend:
+   - Variables CSS del tema oscuro (colores, radios, sombras).
+   - Layout de la app: header, panel del CV y panel de ofertas.
+   - Pestañas de región, toolbar, historial, consultoras QA, tarjetas de oferta,
+     modales, carta de presentación y página de análisis "Propuesta de Interés".
+   - Una media query para que en pantallas chicas la grilla se apile.
+   ¿Dónde se importa? En main.jsx: `import './styles.css'`. Por eso aplica a
+   TODOS los componentes, sin necesidad de clases especiales por archivo.
+   ========================================================================== */
+
+/* ----- Variables del tema (paleta oscura) ----- */
 :root {
+  /* ↑ :root define variables CSS reutilizables. Se usan así: var(--bg), var(--accent)…
+     Cambiar un color acá cambia el tema ENTERO de la app. */
   --bg: #0f172a;
+  /* ↑ Fondo principal de la página (azul muy oscuro). */
   --bg2: #1e293b;
+  /* ↑ Fondo secundario: paneles, tarjetas y controles (un tono más claro que --bg). */
   --panel: #1e293b;
+  /* ↑ Color de los paneles/cards, igual que bg2 para mantener coherencia. */
   --border: #334155;
+  /* ↑ Color de los bordes. Da "profundidad" a las cards sin usar shadow fuerte. */
   --text: #e2e8f0;
+  /* ↑ Color del texto principal (casi blanco, suave para no cansar la vista). */
   --muted: #94a3b8;
+  /* ↑ Color del texto secundario: subtítulos, notas, descripciones tenues. */
   --accent: #3b82f6;
+  /* ↑ Azul "acento" de la app: botones primarios, links y degradados. */
   --accent2: #6366f1;
+  /* ↑ Segundo color del degradado (índigo). Juntos forman el gradiente azul→violeta. */
   --green: #22c55e;
+  /* ↑ Verde semántico: match alto, skills que tenés, badge activa. */
   --yellow: #eab308;
+  /* ↑ Amarillo semántico: match medio, prioridad media. */
   --red: #ef4444;
+  /* ↑ Rojo semántico: match bajo, brechas de skills. */
   --radius: 12px;
+  /* ↑ Radio de esquinas de cards, paneles y modales (redondeado suave). */
   --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  /* ↑ Sombra que flota las cards sobre el fondo oscuro. */
 }
 
+/* Reset básico: todos los elementos calculan su tamaño incluyendo padding/borde
+   y arrancan sin márgenes ni padings propios del navegador. */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
+  /* ↑ Estilo base de toda la página: fuente del sistema, fondo con degradado. */
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   background: linear-gradient(135deg, var(--bg), #1e1b4b);
+  /* ↑ Degradado del fondo (azul oscuro → índigo) para el tema oscuro. */
   color: var(--text);
   min-height: 100vh;
+  /* ↑ Que el fondo llene siempre toda la altura de la ventana. */
 }
 
+/* Contenedor central: limita el ancho y centra la app en pantallas grandes. */
 .app { max-width: 1200px; margin: 0 auto; padding: 16px; }
 
+/* ----- Header ----- */
 .header-inner { padding: 18px 4px 10px; }
-.header-inner h1 { font-size: 1.9rem; background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.header-inner h1 {
+  /* ↑ Título con "texto degradado": el color sale del gradient, no de un color fijo. */
+  font-size: 1.9rem; background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip: text; background-clip: text; color: transparent;
+  /* ↑ Para que el degradado pinte SOLO el texto, se recorta al texto y el color
+     se vuelve transparente. Es un truco clásico de CSS. */
+}
 .subtitle { color: var(--muted); margin-top: 4px; }
 
+/* ----- Layout principal: CV a la izquierda, ofertas a la derecha ----- */
 .layout { display: grid; grid-template-columns: 320px 1fr; gap: 18px; margin-top: 10px; }
+/* ↑ Grilla de 2 columnas: 320px fijos para el CV y el resto (1fr) para las ofertas. */
 
+/* Estilo base de cualquier panel/card: fondo, borde redondeado y sombra. */
 .panel { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); }
 
 /* ----- CV ----- */
 .cv-header { display: flex; gap: 12px; align-items: center; margin-bottom: 14px; }
-.avatar { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.2rem; flex-shrink: 0; }
+.avatar {
+  /* ↑ Avatar circular con las iniciales (AT) y un degradado de fondo. */
+  width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.2rem; flex-shrink: 0;
+}
 .cv-header h2 { font-size: 1.05rem; line-height: 1.2; }
 .cv-role { font-size: 0.8rem; color: var(--accent); margin-top: 2px; }
 .cv-loc { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
 
+/* Cada bloque del CV (Sobre mí / Skills / Enlaces) se separa con un borde superior. */
 .cv-section { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border); }
 .cv-section h3 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 8px; }
 .cv-summary { font-size: 0.85rem; line-height: 1.55; color: var(--text); }
 
+/* Pills de skills: texto chico, borde redondeado y fondo azul translúcido. */
 .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .skill-tags .tag { background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.4); border-radius: 20px; padding: 3px 9px; font-size: 0.72rem; }
 
@@ -53,9 +102,16 @@ body {
 
 /* ----- Región tabs ----- */
 .region-tabs { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
-.region-tab { background: var(--bg2); color: var(--muted); border: 1px solid var(--border); padding: 8px 14px; border-radius: 8px; cursor: pointer; font-size: 0.9rem; transition: 0.15s; }
+.region-tab {
+  /* ↑ Botón base de cada pestaña de región. */
+  background: var(--bg2); color: var(--muted); border: 1px solid var(--border); padding: 8px 14px; border-radius: 8px; cursor: pointer; font-size: 0.9rem; transition: 0.15s;
+  /* ↑ transition suaviza el cambio de color al pasar el mouse. */
+}
 .region-tab:hover { border-color: var(--accent); color: var(--text); }
-.region-tab.active { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; border-color: transparent; font-weight: 600; }
+.region-tab.active {
+  /* ↑ La pestaña seleccionada se pinta con el degradado acento y texto blanco. */
+  background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; border-color: transparent; font-weight: 600;
+}
 
 .status { color: var(--muted); font-size: 0.9rem; margin-bottom: 10px; }
 
@@ -64,7 +120,10 @@ body {
 .toolbar .status { margin-bottom: 0; }
 .toolbar-actions { display: flex; gap: 8px; flex-wrap: wrap; }
 .btn.small { padding: 6px 12px; font-size: 0.8rem; margin: 0; }
-.btn.small.secondary.active { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; border-color: transparent; }
+.btn.small.secondary.active {
+  /* ↑ El botón "historial" activo usa el degradado para indicar que está encendido. */
+  background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; border-color: transparent;
+}
 .btn:disabled { opacity: 0.6; cursor: default; }
 
 /* ----- Historial desde enero 2026 ----- */
@@ -75,6 +134,9 @@ body {
 
 /* ----- Consultoras QA (outreach tracker) ----- */
 .region-tab.consultoras-tab { margin-left: auto; }
+/* ↑ La tab "Consultoras" se empuja a la derecha con margin-left auto. */
+
+/* Pills de categoría de cada consultora: cada una con su color semántico. */
 .cat-pill { font-size: 0.68rem; padding: 3px 10px; border-radius: 20px; white-space: nowrap; border: 1px solid transparent; }
 .cat-qa { background: rgba(34, 197, 94, 0.15); color: var(--green); border-color: rgba(34, 197, 94, 0.35); }
 .cat-it { background: rgba(59, 130, 246, 0.15); color: #3b82f6; border-color: rgba(59, 130, 246, 0.35); }
@@ -82,11 +144,20 @@ body {
 .cat-staffing { background: rgba(236, 72, 153, 0.15); color: #db2777; border-color: rgba(236, 72, 153, 0.35); }
 .cat-fintech { background: rgba(16, 185, 129, 0.15); color: #10b981; border-color: rgba(16, 185, 129, 0.35); }
 .cat-gov { background: rgba(139, 92, 246, 0.15); color: #a78bfa; border-color: rgba(139, 92, 246, 0.35); }
+
 .consultora-card .job-top { justify-content: flex-start; gap: 12px; }
-.consultora-logo { width: 40px; height: 40px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; border-radius: 10px; background: #fff; border: 1px solid var(--border); overflow: hidden; }
+.consultora-logo {
+  /* ↑ Cuadrado blanco que contiene el favicon (logo) de la consultora. */
+  width: 40px; height: 40px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; border-radius: 10px; background: #fff; border: 1px solid var(--border); overflow: hidden;
+}
 .consultora-logo img { width: 100%; height: 100%; object-fit: contain; padding: 4px; }
-.consultora-logo-init { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem; color: #fff; background: linear-gradient(135deg, #3b82f6, #8b5cf6); }
+.consultora-logo-init {
+  /* ↑ Placeholder circular cuando la consultora no tiene dominio: la inicial. */
+  width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem; color: #fff; background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+}
 .consultora-card .cat-pill { margin-left: auto; }
+
+/* Filtro y controles del tracker de contacto. */
 .consultoras-filter { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
 .filter-label { font-size: 0.85rem; color: var(--muted); }
 .consultoras-filter .estado-select { min-width: 250px; }
@@ -96,15 +167,21 @@ body {
 
 /* ----- Lista de ofertas ----- */
 .job-list { display: flex; flex-direction: column; gap: 12px; }
-.job-card { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; cursor: pointer; transition: transform 0.12s, border-color 0.12s; box-shadow: var(--shadow); }
+.job-card {
+  /* ↑ Card clicable de cada oferta: al hover se eleva y cambia su borde. */
+  background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; cursor: pointer; transition: transform 0.12s, border-color 0.12s; box-shadow: var(--shadow);
+}
 .job-card:hover { transform: translateY(-2px); border-color: var(--accent); }
 .job-card .job-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
 .job-card .job-title { font-size: 1rem; font-weight: 600; }
 .job-card .job-company { color: var(--muted); font-size: 0.85rem; }
+
+/* Pill del % de match: color según el score (verde/amarillo/rojo). */
 .job-card .match-pill { font-weight: 700; padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; flex-shrink: 0; }
 .match-high { background: rgba(34, 197, 94, 0.2); color: var(--green); }
 .match-mid { background: rgba(234, 179, 8, 0.2); color: var(--yellow); }
 .match-low { background: rgba(239, 68, 68, 0.2); color: var(--red); }
+
 .job-card .job-meta { display: flex; gap: 12px; margin-top: 8px; font-size: 0.8rem; color: var(--muted); flex-wrap: wrap; }
 .job-card .job-skill-preview { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 5px; }
 .pagination { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
@@ -112,16 +189,26 @@ body {
 .pagination-info { color: var(--muted); font-size: 0.85rem; }
 .job-card .job-skill-preview .mini { background: var(--bg2); border-radius: 12px; padding: 2px 8px; font-size: 0.7rem; color: var(--muted); }
 
+/* Mensaje de "sin resultados": borde punteado centrado y texto tenue. */
 .empty { text-align: center; color: var(--muted); padding: 40px; border: 1px dashed var(--border); border-radius: var(--radius); }
 
 /* ----- Modal ----- */
-.modal { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.7); display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 16px; }
+.modal {
+  /* ↑ Capa oscura a pantalla completa que "tapa" el fondo y centra el contenido.
+     position: fixed + inset: 0 lo estira sobre toda la ventana. */
+  position: fixed; inset: 0; background: rgba(0, 0, 0, 0.7); display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 16px;
+}
 .modal.hidden { display: none; }
-.modal-content { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); max-width: 640px; width: 100%; max-height: 85vh; overflow-y: auto; padding: 22px; position: relative; box-shadow: var(--shadow); }
+.modal-content {
+  /* ↑ Caja blanca del modal: ancho máximo 640px y scroll interno si el contenido
+     supera el 85% del alto de la pantalla. */
+  background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); max-width: 640px; width: 100%; max-height: 85vh; overflow-y: auto; padding: 22px; position: relative; box-shadow: var(--shadow);
+}
 .modal-content.letter { max-width: 760px; }
 .modal-close { position: absolute; top: 10px; right: 14px; background: none; border: none; color: var(--muted); font-size: 1.6rem; cursor: pointer; }
 .modal-close:hover { color: var(--text); }
 
+/* Detalle de la oferta dentro del modal. */
 .detail-title { font-size: 1.3rem; margin-bottom: 10px; }
 .detail-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; font-size: 0.85rem; }
 .detail-meta .chip { background: var(--bg); border: 1px solid var(--border); border-radius: 20px; padding: 4px 10px; }
@@ -132,15 +219,72 @@ body {
 .skills-wanted .w { background: rgba(34, 197, 94, 0.15); border: 1px solid rgba(34, 197, 94, 0.4); border-radius: 20px; padding: 3px 9px; font-size: 0.75rem; }
 .gap-skills .g { background: rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.4); border-radius: 20px; padding: 3px 9px; font-size: 0.75rem; }
 .description { font-size: 0.9rem; line-height: 1.6; color: var(--text); }
+
+/* Botones: primarios con degradado acento y secundarios "fantasma". */
 .btn { display: inline-block; background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; border: none; padding: 10px 16px; border-radius: 8px; cursor: pointer; font-weight: 600; text-decoration: none; font-size: 0.9rem; margin-right: 8px; }
 .btn.secondary { background: var(--bg); color: var(--text); border: 1px solid var(--border); margin: 0; }
 .btn-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
 .btn:hover { filter: brightness(1.08); }
 
 /* ----- Carta ----- */
-.letter-body { white-space: pre-wrap; font-size: 0.95rem; line-height: 1.7; margin-top: 10px; background: #f8fafc; color: #0f172a; padding: 20px; border-radius: 8px; }
+.letter-body {
+  /* ↑ El cuerpo de la carta es un bloque claro sobre fondo oscuro: se ve como una
+     hoja. white-space: pre-wrap respeta los saltos de línea que trajo el backend. */
+  white-space: pre-wrap; font-size: 0.95rem; line-height: 1.7; margin-top: 10px; background: #f8fafc; color: #0f172a; padding: 20px; border-radius: 8px;
+}
 .letter-actions { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
 
+/* ----- Propuesta de Interés (análisis de mercado vs CV) ----- */
+.analysis-head { margin-bottom: 14px; }
+.analysis-head h2 {
+  /* ↑ Título de la página con el mismo texto degradado que el header. */
+  font-size: 1.35rem; background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.analysis-head p { color: var(--muted); margin-top: 4px; font-size: 0.9rem; line-height: 1.5; }
+
+/* Grilla de KPIs: se adapta sola a la cantidad de columnas según el ancho. */
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 16px; }
+.kpi { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; }
+.kpi-value { font-size: 1.7rem; font-weight: 800; background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.kpi-label { font-size: 0.82rem; color: var(--muted); margin-top: 2px; }
+.kpi-sub { font-size: 0.72rem; color: var(--muted); opacity: 0.85; }
+
+/* Cada sección del análisis separada por borde superior, modo "documento". */
+.analisis-section { margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--border); }
+.analisis-section h3 { font-size: 0.82rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 8px; }
+.analisis-note { font-size: 0.8rem; color: var(--muted); margin-bottom: 10px; }
+
+/* Barras horizontales de demanda. La barra se pinta con un degradado ancho y
+   la UI le setea el width% inline (style={{ width: ... }}). */
+.bars { display: flex; flex-direction: column; gap: 8px; }
+.bar-row { display: flex; flex-direction: column; gap: 3px; }
+.bar-label { font-size: 0.82rem; color: var(--text); }
+.bar-label .bar-pct { color: var(--muted); }
+.bar-track { position: relative; height: 18px; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 6px; background: linear-gradient(90deg, var(--accent), var(--accent2)); transition: width 0.4s ease; }
+.bar-fill.region { background: linear-gradient(90deg, var(--green), #34d399); }
+.bar-row.have .bar-fill { background: linear-gradient(90deg, var(--green), #34d399); }
+.bar-row.gap .bar-fill { background: linear-gradient(90deg, var(--red), #f97316); }
+.badge-cv { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); font-size: 0.65rem; font-weight: 700; color: #052e16; background: rgba(34, 197, 94, 0.35); padding: 1px 7px; border-radius: 10px; }
+
+/* Chips de brechas (rojos) y de fortalezas (verdes). */
+.gap-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.gap-chip { background: rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.45); color: #fca5a5; border-radius: 20px; padding: 4px 11px; font-size: 0.8rem; }
+.strengths { display: flex; flex-wrap: wrap; gap: 8px; }
+.strong-chip { background: rgba(34, 197, 94, 0.12); border: 1px solid rgba(34, 197, 94, 0.4); color: var(--green); border-radius: 20px; padding: 4px 11px; font-size: 0.8rem; }
+
+.region-bars { display: flex; flex-direction: column; gap: 10px; }
+
+/* Recomendaciones: cada ítem con un borde lateral de color según su prioridad. */
+.recs { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.rec { background: var(--bg2); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 8px; padding: 10px 12px; font-size: 0.88rem; line-height: 1.5; }
+.rec-alta { border-left-color: var(--red); }
+.rec-media { border-left-color: var(--yellow); }
+.rec-baja { border-left-color: var(--green); }
+.rec-prio { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); display: block; margin-bottom: 2px; }
+
+/* Media query: en pantallas angostas la grilla pasa a UNA columna y el CV
+   se muestra después de las ofertas (order), para priorizar el contenido. */
 @media (max-width: 860px) {
   .layout { grid-template-columns: 1fr; }
   .cv-panel { order: 2; }
