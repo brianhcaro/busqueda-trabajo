@@ -74,6 +74,8 @@ export default function JobList({ jobs, viewMode, onOpen }) {
             <div className="job-meta">
               <span>📍 {job.location || 'Remote'}</span>
               {/* ↑ || 'Remote': si la oferta no declara ubicación, muestra Remote. */}
+              {job.modality && <span>🕒 {job.modality}</span>}
+              {/* ↑ Modalidad del puesto (full time, home office, híbrido X días) si viene en el empleo. */}
               {job.salary && <span>💰 {job.salary}</span>}
               {/* ↑ Render condicional: solo muestra el sueldo si existe el campo. */}
             </div>

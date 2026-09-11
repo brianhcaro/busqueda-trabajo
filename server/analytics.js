@@ -243,6 +243,8 @@ export function buildAnalytics(regions) {
       titulo: PROFILE.title,
       experienciaAños: PROFILE.yearsExperience || 0,
       location: PROFILE.location,
+      github: PROFILE.github,
+      proyectos: PROFILE.projects || [],
     },
     total,
     avgScore,

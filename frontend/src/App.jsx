@@ -131,8 +131,14 @@ export default function App() {
   async function handleRefresh() {
     setRefreshing(true);
     await refreshJobs();
-    const data = viewMode === 'history' ? await loadHistory(region) : await loadJobs(region);
-    setJobsData(data);
+    // ↑ En la pestaña Propuesta de Interés, el refresh debe recalcular la analítica
+    //   (no hay ofertas de una región que recargar como en las pestañas de países).
+    if (region === 'analisis') {
+      setAnalytics(await loadAnalytics());
+    } else {
+      const data = viewMode === 'history' ? await loadHistory(region) : await loadJobs(region);
+      setJobsData(data);
+    }
     setRefreshing(false);
   }
 
@@ -140,6 +146,8 @@ export default function App() {
   async function handleToggleHistory() {
     const next = viewMode === 'history' ? 'live' : 'history';
     setViewMode(next);
+    if (region === 'analisis') return;
+    // ↑ En Propuesta de Interés solo cambia la vista global; su contenido no depende del historial.
     setLoading(true);
     const data = next === 'history' ? await loadHistory(region) : await loadJobs(region);
     setJobsData(data);
@@ -243,8 +251,17 @@ export default function App() {
             <ConsultorasList consultoras={consultoras} estados={estados} onChange={handleConsultoraChange} />
             // ↑ Sección Consultoras QA: pasa el listado, los estados y el callback de cambio.
           ) : region === 'analisis' ? (
-            <AnalysisPage data={analytics} profile={profile} />
-            // ↑ Propuesta de Interés: recibe los datos de analítica y el perfil.
+            <AnalysisPage
+              data={analytics}
+              profile={profile}
+              viewMode={viewMode}
+              refreshing={refreshing}
+              onRefresh={handleRefresh}
+              onToggleHistory={handleToggleHistory}
+              linkedinKeywords={linkedinKeywords}
+            />
+            // ↑ Propuesta de Interés: recibe los datos de analítica, el perfil y los
+            //   controles de búsqueda (actualizar / desde enero / LinkedIn).
           ) : (
             <JobList key={`${region}-${viewMode}`} jobs={jobsData.jobs || []} viewMode={viewMode} onOpen={openDetail} />
             // ↑ Ofertas de la región: el key fuerza a React a volver a montar la lista

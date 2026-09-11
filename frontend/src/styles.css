@@ -101,7 +101,9 @@ body {
 .links a:hover { text-decoration: underline; }
 
 /* ----- Región tabs ----- */
-.region-tabs { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+.region-tabs { display: flex; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
+.region-tabs-secondary { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+/* ↑ Fila de secciones (Propuesta de Interés / Consultoras) debajo de los países. */
 .region-tab {
   /* ↑ Botón base de cada pestaña de región. */
   background: var(--bg2); color: var(--muted); border: 1px solid var(--border); padding: 8px 14px; border-radius: 8px; cursor: pointer; font-size: 0.9rem; transition: 0.15s;
@@ -235,7 +237,9 @@ body {
 .letter-actions { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
 
 /* ----- Propuesta de Interés (análisis de mercado vs CV) ----- */
-.analysis-head { margin-bottom: 14px; }
+.analysis-head { margin-bottom: 14px; display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
+.analysis-title { flex: 1 1 300px; }
+.analysis-actions { display: flex; gap: 8px; flex-wrap: wrap; }
 .analysis-head h2 {
   /* ↑ Título de la página con el mismo texto degradado que el header. */
   font-size: 1.35rem; background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip: text; background-clip: text; color: transparent;
@@ -274,6 +278,19 @@ body {
 .strong-chip { background: rgba(34, 197, 94, 0.12); border: 1px solid rgba(34, 197, 94, 0.4); color: var(--green); border-radius: 20px; padding: 4px 11px; font-size: 0.8rem; }
 
 .region-bars { display: flex; flex-direction: column; gap: 10px; }
+
+/* Tarjetas de proyectos: grilla adaptativa con nombre, lenguaje y demo. */
+.projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
+.project-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; }
+.project-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.project-head a { color: var(--accent); font-size: 0.9rem; text-decoration: none; }
+.project-head a:hover { text-decoration: underline; }
+.project-lang { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); border: 1px solid var(--border); border-radius: 10px; padding: 1px 8px; white-space: nowrap; }
+.project-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.45; margin: 0; }
+.project-demo { font-size: 0.78rem; color: var(--green); text-decoration: none; }
+.project-demo:hover { text-decoration: underline; }
+.analisis-note a { color: var(--accent); text-decoration: none; }
+.analisis-note a:hover { text-decoration: underline; }
 
 /* Recomendaciones: cada ítem con un borde lateral de color según su prioridad. */
 .recs { list-style: none; display: flex; flex-direction: column; gap: 8px; }

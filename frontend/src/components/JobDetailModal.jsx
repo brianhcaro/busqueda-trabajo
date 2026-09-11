@@ -110,6 +110,8 @@ export default function JobDetailModal({ job, summary, region, profile, onClose,
         <div className="detail-meta">
           <span className="chip">🏢 {job.company}</span>
           <span className="chip">📍 {job.location || 'Remote'}</span>
+          {job.modality && <span className="chip">🕒 {job.modality}</span>}
+          {/* ↑ Modalidad del puesto (full time, home office, híbrido X días) si viene en el empleo. */}
           <span className="chip">{job.source}</span>
           <span className={`chip match-pill ${matchClass(job.score)}`}>Match {job.score}%</span>
           {/* ↑ El pill del match usa matchClass para su color (verde/amarillo/rojo). */}

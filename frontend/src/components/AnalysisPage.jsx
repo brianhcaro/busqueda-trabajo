@@ -23,8 +23,12 @@ function Kpi({ label, value, sub }) {
   );
 }
 
-// Página completa del análisis. Recibe `data` (analítica del backend) y `profile`.
-export default function AnalysisPage({ data, profile }) {
+import { linkedinSearchUrl } from '../utils.js';
+// ↑ Importamos la función que arma el link de búsqueda de LinkedIn (del archivo utils).
+
+// Página completa del análisis. Recibe `data` (analítica del backend), `profile` y
+// los controles de búsqueda para mostrarlos en la misma línea que el título.
+export default function AnalysisPage({ data, profile, viewMode, refreshing, onRefresh, onToggleHistory, linkedinKeywords }) {
   // ↑ Desestructuración de props: data trae KPIs/barras/recs; profile identifica al candidato.
 
   if (!data) return <div className="empty">No hay datos para analizar todavía. Probá actualizar la búsqueda.</div>;
@@ -40,6 +44,7 @@ export default function AnalysisPage({ data, profile }) {
   const skillStats = data.skillStats || [];
   const byRegion = data.byRegion || [];
   const recs = data.recommendations || [];
+  const candidato = data.candidato || {};
 
   // El % más alto de demanda: sirve para escalar el ancho de todas las barras.
   const maxPct = Math.max(1, ...skillStats.map((s) => s.pct));
@@ -56,13 +61,44 @@ export default function AnalysisPage({ data, profile }) {
   return (
     <div className="analysis">
       <div className="analysis-head">
-        <h2>Propuesta de Interés</h2>
-        <p>
-          Análisis de las <strong>{total}</strong> vacantes QA detectadas en todas las regiones, comparadas con el CV de{' '}
-          {/* ↑ {' '}: espacio "duro" en JSX para que la palabra siguiente no se pegue. */}
-          <strong>{profile?.fullName || 'Ali Tovar'}</strong>.
-          {/* ↑ Optional chaining: si profile es null, no explota; usa el nombre por defecto. */}
-        </p>
+        <div className="analysis-title">
+          <h2>Propuesta de Interés</h2>
+          <p>
+            Análisis de las <strong>{total}</strong> vacantes QA detectadas en todas las regiones, comparadas con el CV de{' '}
+            {/* ↑ {' '}: espacio "duro" en JSX para que la palabra siguiente no se pegue. */}
+            <strong>{profile?.fullName || 'Ali Tovar'}</strong>.
+            {/* ↑ Optional chaining: si profile es null, no explota; usa el nombre por defecto. */}
+          </p>
+        </div>
+        {/* ↑ Bloque izquierdo de la línea: título + descripción de la propuesta. */}
+
+        {/* Acciones en la misma línea que la Propuesta, por orden de prioridad:
+            actualizar búsqueda → historial desde enero → buscar en LinkedIn. */}
+        <div className="analysis-actions">
+          <button className="btn small" onClick={onRefresh} disabled={refreshing} title="Volver a consultar las fuentes y recalcular el análisis">
+            {refreshing ? '🔄 Actualizando…' : '🔄 Actualizar búsqueda'}
+          </button>
+          <button
+            className={`btn small secondary${viewMode === 'history' ? ' active' : ''}`}
+            // ↑ La clase 'active' solo se agrega cuando estás viendo el historial.
+            onClick={onToggleHistory}
+            title="Ver ofertas vistas desde enero 2026"
+          >
+            {viewMode === 'history' ? '🔴 Ver solo activas' : '🕒 Desde enero 2026'}
+            {/* ↑ El texto del botón cambia según la vista: es un "toggle" visual. */}
+          </button>
+          <a
+            className="btn small secondary"
+            href={linkedinSearchUrl(linkedinKeywords, profile?.region || 'argentina')}
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Abrir esta búsqueda en LinkedIn (fuera del match automático)"
+          >
+            🔗 Buscar en LinkedIn
+          </a>
+          {/* ↑ Es un <a>, no un <button>: porque navega a una URL generada con
+              las keywords del perfil (sin scrapear nada). */}
+        </div>
       </div>
 
       {/* Fila de tarjetas KPI con los números principales del mercado. */}
@@ -144,6 +180,36 @@ export default function AnalysisPage({ data, profile }) {
                     Math.min(100, ...) garantiza que nunca supere el 100%. */}
               </div>
             </div>
+          ))}
+        </div>
+      </section>
+
+      {/* GitHub y proyectos de portafolio */}
+      <section className="analisis-section">
+        <h3>GitHub y proyectos</h3>
+        <p className="analisis-note">
+          {candidato.github ? (
+            // ↑ Si el perfil trae GitHub, mostramos el link directo (se abre en otra pestaña).
+            <a href={candidato.github} target="_blank" rel="noreferrer">{candidato.github.replace('https://', '')}</a>
+          ) : (
+            'github.com/avtovar'
+          )}{' '}
+          · repos públicos con ejemplos de testing, automatización y desarrollo.
+        </p>
+        <div className="projects">
+          {(candidato.proyectos || []).map((p) => (
+            // ↑ Recorremos los proyectos del perfil; cada uno es una tarjeta con link.
+            <article className="project-card" key={p.url}>
+              <div className="project-head">
+                <a href={p.url} target="_blank" rel="noreferrer"><strong>{p.nombre}</strong></a>
+                {p.lenguaje && <span className="project-lang">{p.lenguaje}</span>}
+              </div>
+              <p className="project-desc">{p.descripcion}</p>
+              {p.home && (
+                // ↑ Solo si la repo tiene demo publicada, aparece el botón "Ver demo".
+                <a className="project-demo" href={p.home} target="_blank" rel="noreferrer">Ver demo ↗</a>
+              )}
+            </article>
           ))}
         </div>
       </section>

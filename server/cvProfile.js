@@ -22,6 +22,56 @@ const PROFILE = {
   linkedin: 'https://www.linkedin.com/in/ali-v-tovar',
   github: 'https://github.com/avtovar',
 
+  // Proyectos públicos del portafolio en GitHub (fuente: repos de avtovar, sin forks).
+  // ↑ projects: ejemplos reales de testing y desarrollo para mostrar en la analítica
+  projects: [
+    {
+      nombre: 'busqueda-trabajo',
+      descripcion:
+        'Buscador y analizador de vacantes QA en 7 regiones con motor de match, analítica de mercado y propuesta de interés (Node.js + Express + React/Vite).',
+      url: 'https://github.com/avtovar/busqueda-trabajo',
+      home: null,
+      lenguaje: 'JavaScript',
+    },
+    {
+      nombre: 'tiendaciudad-tests',
+      descripcion:
+        'Suite de pruebas automatizadas (TypeScript) sobre una tienda en línea: casos de compra, validaciones de formularios y flujo crítico de checkout.',
+      url: 'https://github.com/avtovar/tiendaciudad-tests',
+      home: null,
+      lenguaje: 'TypeScript',
+    },
+    {
+      nombre: 'automatizacion_pagina_brubank',
+      descripcion:
+        'Automatización web de un home banking (Brubank): pruebas de login, consultas y flujos de pago sobre un entorno fintech real.',
+      url: 'https://github.com/avtovar/automatizacion_pagina_brubank',
+      home: null,
+      lenguaje: 'HTML',
+    },
+    {
+      nombre: 'proyecto_web_para_adelgazar',
+      descripcion: 'Aplicación web completa desplegada en Vercel: frontend maquetado, persistencia y lógica de negocio.',
+      url: 'https://github.com/avtovar/proyecto_web_para_adelgazar',
+      home: 'https://proyecto-web-para-adelgazar.vercel.app',
+      lenguaje: 'JavaScript',
+    },
+    {
+      nombre: 'react',
+      descripcion: 'Ejercicios prácticos de componentes en React (estado y props) con deploy en Vercel.',
+      url: 'https://github.com/avtovar/react',
+      home: 'https://ejercicio3-liart.vercel.app',
+      lenguaje: 'HTML',
+    },
+    {
+      nombre: 'proyecto_API',
+      descripcion: 'Práctica de consumo y construcción de APIs con Python: peticiones, respuestas y manejo de endpoints.',
+      url: 'https://github.com/avtovar/proyecto_API',
+      home: null,
+      lenguaje: 'Python',
+    },
+  ],
+
   // Skills con pesos (0-1) para calcular el match
   // ↑ skills: tecnologías que Ali domina, con peso 0-1 según su importancia
   skills: {
