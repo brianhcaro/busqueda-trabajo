@@ -1,8 +1,9 @@
 import { useState } from 'react';
 // ↑ useState para el filtro por categoría del directorio de consultoras.
 
-import { CATEGORY_CLASS } from '../utils.js';
-// ↑ Mapa categoría -> clase CSS (color del pill de cada consultora).
+import { CATEGORY_CLASS, consultoraSearchUrl } from '../utils.js';
+// ↑ Mapa categoría -> clase CSS (color del pill de cada consultora) y la función
+//   que arma el link de "Buscar empleos" para cada una (misma idea que LinkedIn).
 
 import { saveConsultoraStatus } from '../api.js';
 // ↑ Función de la capa API que persiste estado/notas de contacto en el backend.
@@ -49,8 +50,9 @@ function ConsultoraLogo({ link, name }) {
 // Directorio de consultoras QA con tracker de contacto.
 // Recibe por props el listado, los estados disponibles y el callback onChange
 // (que App usa para actualizar su estado local de forma "optimista").
-export default function ConsultorasList({ consultoras, estados, onChange }) {
-  // ↑ Desestructuración de props: consultoras, estados y la función para avisar al padre.
+export default function ConsultorasList({ consultoras, estados, onChange, keywords }) {
+  // ↑ Desestructuración de props: consultoras, estados, la función para avisar al
+  //   padre y las keywords del perfil (para armar la búsqueda de empleos).
 
   const [filtroCat, setFiltroCat] = useState('Todas');
   // ↑ Estado del filtro: 'Todas' muestra todas las consultoras.
@@ -136,6 +138,18 @@ export default function ConsultorasList({ consultoras, estados, onChange }) {
                 🔗 Ver perfil
               </a>
             )}
+            <a
+              className="btn small secondary"
+              href={consultoraSearchUrl(c.link, keywords)}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={`Buscar empleos de "${keywords}" en ${c.name} (Google)`}
+            >
+              {/* ↑ Cumple la MISMA función que el botón "Buscar en LinkedIn" del toolbar:
+                  abre una búsqueda ya armada con las keywords del perfil, esta vez
+                  acotada al sitio de la consultora vía Google (site:dominio). */}
+              🔍 Buscar empleos
+            </a>
             <input
               className="notas-input"
               type="text"

@@ -14,32 +14,45 @@
 /* ----- Variables del tema (paleta oscura) ----- */
 :root {
   /* ↑ :root define variables CSS reutilizables. Se usan así: var(--bg), var(--accent)…
-     Cambiar un color acá cambia el tema ENTERO de la app. */
-  --bg: #0f172a;
-  /* ↑ Fondo principal de la página (azul muy oscuro). */
-  --bg2: #1e293b;
+     Cambiar un color acá cambia el tema ENTERO de la app.
+     Paleta v2: mismo esquema oscuro de antes pero más prolijo (fondos con menos
+     "ruido" azul plano) y acentos más vivos (violeta/cian) para que los botones,
+     links y degradados resalten más sobre el fondo. */
+  --bg: #0a0f1e;
+  /* ↑ Fondo principal de la página (azul-negro, más profundo que antes). */
+  --bg2: #141b2e;
   /* ↑ Fondo secundario: paneles, tarjetas y controles (un tono más claro que --bg). */
-  --panel: #1e293b;
-  /* ↑ Color de los paneles/cards, igual que bg2 para mantener coherencia. */
-  --border: #334155;
+  --panel: #161f36;
+  /* ↑ Color de los paneles/cards: un pelín más claro que bg2 para dar profundidad. */
+  --panel-hover: #1b2540;
+  /* ↑ Fondo de panel/card al pasar el mouse (hover), sutilmente más claro. */
+  --border: #2a3557;
   /* ↑ Color de los bordes. Da "profundidad" a las cards sin usar shadow fuerte. */
-  --text: #e2e8f0;
+  --border-strong: #3d4b78;
+  /* ↑ Borde más marcado para hover/focus, sin llegar al color de acento. */
+  --text: #eef2fb;
   /* ↑ Color del texto principal (casi blanco, suave para no cansar la vista). */
-  --muted: #94a3b8;
+  --muted: #9aa8c7;
   /* ↑ Color del texto secundario: subtítulos, notas, descripciones tenues. */
-  --accent: #3b82f6;
-  /* ↑ Azul "acento" de la app: botones primarios, links y degradados. */
-  --accent2: #6366f1;
-  /* ↑ Segundo color del degradado (índigo). Juntos forman el gradiente azul→violeta. */
-  --green: #22c55e;
-  /* ↑ Verde semántico: match alto, skills que tenés, badge activa. */
-  --yellow: #eab308;
+  --accent: #6c5ce7;
+  /* ↑ Violeta "acento" de la app: botones primarios, links y degradados. Más vivo
+     que el azul plano anterior. */
+  --accent2: #00c2ff;
+  /* ↑ Segundo color del degradado (cian eléctrico). Juntos forman un gradiente
+     violeta→cian bien saturado, mucho más vivo que el azul→índigo original. */
+  --accent-glow: rgba(108, 92, 231, 0.45);
+  /* ↑ Color del "brillo" (glow) que aparece al hacer hover sobre botones primarios. */
+  --green: #2dd4bf;
+  /* ↑ Verde-agua semántico: match alto, skills que tenés, badge activa. */
+  --yellow: #fbbf24;
   /* ↑ Amarillo semántico: match medio, prioridad media. */
-  --red: #ef4444;
-  /* ↑ Rojo semántico: match bajo, brechas de skills. */
-  --radius: 12px;
+  --red: #fb7185;
+  /* ↑ Rojo/rosado semántico: match bajo, brechas de skills. */
+  --radius: 14px;
   /* ↑ Radio de esquinas de cards, paneles y modales (redondeado suave). */
-  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --radius-sm: 10px;
+  /* ↑ Radio más chico para botones y controles pequeños. */
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
   /* ↑ Sombra que flota las cards sobre el fondo oscuro. */
 }
 
@@ -50,8 +63,9 @@
 body {
   /* ↑ Estilo base de toda la página: fuente del sistema, fondo con degradado. */
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  background: linear-gradient(135deg, var(--bg), #1e1b4b);
-  /* ↑ Degradado del fondo (azul oscuro → índigo) para el tema oscuro. */
+  background: radial-gradient(circle at 15% 0%, #1a1240 0%, transparent 45%), linear-gradient(160deg, var(--bg), #0d1224 60%);
+  /* ↑ Fondo con un degradado radial violeta sutil arriba a la izquierda, sobre
+     el degradado lineal base. Da más profundidad que un simple gradiente plano. */
   color: var(--text);
   min-height: 100vh;
   /* ↑ Que el fondo llene siempre toda la altura de la ventana. */
@@ -109,7 +123,7 @@ body {
   background: var(--bg2); color: var(--muted); border: 1px solid var(--border); padding: 8px 14px; border-radius: 8px; cursor: pointer; font-size: 0.9rem; transition: 0.15s;
   /* ↑ transition suaviza el cambio de color al pasar el mouse. */
 }
-.region-tab:hover { border-color: var(--accent); color: var(--text); }
+.region-tab:hover { border-color: var(--accent2); color: var(--text); box-shadow: 0 0 0 1px var(--accent-glow); }
 .region-tab.active {
   /* ↑ La pestaña seleccionada se pinta con el degradado acento y texto blanco. */
   background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; border-color: transparent; font-weight: 600;
@@ -126,7 +140,8 @@ body {
   /* ↑ El botón "historial" activo usa el degradado para indicar que está encendido. */
   background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; border-color: transparent;
 }
-.btn:disabled { opacity: 0.6; cursor: default; }
+.btn:disabled { opacity: 0.6; cursor: default; transform: none; box-shadow: none; filter: none; }
+/* ↑ Un botón deshabilitado (ej. "Actualizando…") no debe levantarse ni brillar al hover. */
 
 /* ----- Historial desde enero 2026 ----- */
 .job-history { margin-top: 8px; }
@@ -173,7 +188,9 @@ body {
   /* ↑ Card clicable de cada oferta: al hover se eleva y cambia su borde. */
   background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; cursor: pointer; transition: transform 0.12s, border-color 0.12s; box-shadow: var(--shadow);
 }
-.job-card:hover { transform: translateY(-2px); border-color: var(--accent); }
+.job-card:hover { transform: translateY(-2px); border-color: var(--accent2); box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--accent-glow); }
+/* ↑ Además de levantarse, ahora el borde se pinta cian y aparece un aro de glow
+   violeta sutil, en línea con el resto de los elementos interactivos. */
 .job-card .job-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
 .job-card .job-title { font-size: 1rem; font-weight: 600; }
 .job-card .job-company { color: var(--muted); font-size: 0.85rem; }
@@ -222,11 +239,34 @@ body {
 .gap-skills .g { background: rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.4); border-radius: 20px; padding: 3px 9px; font-size: 0.75rem; }
 .description { font-size: 0.9rem; line-height: 1.6; color: var(--text); }
 
-/* Botones: primarios con degradado acento y secundarios "fantasma". */
-.btn { display: inline-block; background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; border: none; padding: 10px 16px; border-radius: 8px; cursor: pointer; font-weight: 600; text-decoration: none; font-size: 0.9rem; margin-right: 8px; }
-.btn.secondary { background: var(--bg); color: var(--text); border: 1px solid var(--border); margin: 0; }
+/* Botones: primarios con degradado acento vivo + glow, y secundarios "fantasma"
+   que se iluminan al hover. Todos con una transición pareja y un estado :active
+   que "hunde" el botón para dar feedback táctil al click. */
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff; border: none; padding: 10px 18px; border-radius: var(--radius-sm);
+  cursor: pointer; font-weight: 600; text-decoration: none; font-size: 0.9rem;
+  margin-right: 8px; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+.btn:hover { filter: brightness(1.1); transform: translateY(-1px); box-shadow: 0 6px 20px var(--accent-glow); }
+/* ↑ Al pasar el mouse: se aclara un poco, se "levanta" 1px y aparece un glow
+   violeta/cian detrás, para que se sienta más vivo que un simple cambio de color. */
+.btn:active { transform: translateY(0); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); }
+/* ↑ Al hacer click: vuelve a su lugar y la sombra se achica (efecto de "apretado"). */
+.btn:focus-visible { outline: 2px solid var(--accent2); outline-offset: 2px; }
+/* ↑ Accesibilidad: quien navega con teclado ve un aro cian claro alrededor del botón. */
+
+.btn.secondary {
+  background: var(--bg2); color: var(--text); border: 1px solid var(--border); margin: 0;
+  box-shadow: none;
+}
+.btn.secondary:hover { border-color: var(--accent2); color: #fff; box-shadow: 0 4px 16px rgba(0, 194, 255, 0.18); }
+/* ↑ El botón secundario no tiene degradado, pero al hover el borde y la sombra
+   toman el color de acento cian para que también se sienta "vivo". */
+
 .btn-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-.btn:hover { filter: brightness(1.08); }
 
 /* ----- Carta ----- */
 .letter-body {

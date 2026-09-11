@@ -248,7 +248,7 @@ export default function App() {
           {/* Render condicional: la sección derecha muestra un componente u otro
               según la región elegida (ofertas, consultoras o análisis). */}
           {region === 'consultoras' ? (
-            <ConsultorasList consultoras={consultoras} estados={estados} onChange={handleConsultoraChange} />
+            <ConsultorasList consultoras={consultoras} estados={estados} onChange={handleConsultoraChange} keywords={linkedinKeywords} />
             // ↑ Sección Consultoras QA: pasa el listado, los estados y el callback de cambio.
           ) : region === 'analisis' ? (
             <AnalysisPage

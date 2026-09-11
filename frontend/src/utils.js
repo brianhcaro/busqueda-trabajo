@@ -40,6 +40,27 @@ export function linkedinSearchUrl(keywords, region) {
   return `https://www.linkedin.com/jobs/search/?${params.toString()}`;
 }
 
+// Igual que con LinkedIn: no scrapeamos el sitio de cada consultora ni sabemos
+// si tiene una sección "empleos" con una URL predecible (cada una es distinta).
+// En vez de eso armamos una búsqueda de Google acotada a su dominio (site:) con
+// las keywords del perfil + "empleos", así el link de cada consultora cumple la
+// MISMA función que el botón de LinkedIn: abrir una búsqueda ya filtrada, sin
+// necesidad de que el usuario googlee todo de nuevo.
+export function consultoraSearchUrl(link, keywords) {
+  let dominio = '';
+  try {
+    dominio = new URL(link).hostname.replace(/^www\./, '');
+    // ↑ Sacamos el "www." para que el site: search sea más amplio (incluye subdominios).
+  } catch {
+    dominio = '';
+  }
+  const query = dominio
+    ? `site:${dominio} (empleo OR empleos OR vacante OR "trabajá con nosotros") ${keywords}`
+    : `${keywords} empleos`;
+  const params = new URLSearchParams({ q: query });
+  return `https://www.google.com/search?${params.toString()}`;
+}
+
 // Mapas categoría de consultora -> clase CSS que da el color del pill.
 // La categoría viene del backend, la clase se resuelve con un lookup.
 export const CATEGORY_CLASS = {
