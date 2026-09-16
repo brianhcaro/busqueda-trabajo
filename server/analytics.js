@@ -109,11 +109,16 @@ function buildRecommendations({ skillStats, missingSkills, total, byRegion, engl
   const englishPct = total ? Math.round((englishCount / total) * 100) : 0;
   // ↑ Si pasa el 20%, vale la pena recomendar prepararse
   if (englishPct >= 20) {
-    // ↑ REC 3: preparación para entrevistas en inglés
+    // ↑ Nivel declarado en el CV (ej. B2, C1, C2); si cubre el requisito, cambia el consejo
+    const level = PROFILE.englishLevel || '';
+    const coversLevel = /C1|C2|advanced|bilingüe|bilingue|nativo/i.test(level);
+    // ↑ REC 3: preparación para entrevistas en inglés (o validación del nivel declarado)
     recs.push({
       priority: 'MEDIA',
       icon: '🗣️',
-      text: `El inglés aparece como requisito en el ${englishPct}% de las ofertas (conversacional/bilingüe). Reflejá tu nivel real en el CV y preparate para una entrevista en inglés.`,
+      text: coversLevel
+        ? `El inglés aparece como requisito en el ${englishPct}% de las ofertas (conversacional/bilingüe). Tu CV ya declara nivel ${level}, que cubre este requisito: mantenelo visible y preparate para defenderlo en una entrevista técnica en inglés.`
+        : `El inglés aparece como requisito en el ${englishPct}% de las ofertas (conversacional/bilingüe). Reflejá tu nivel real en el CV y preparate para una entrevista en inglés.`,
     });
   }
 

@@ -21,6 +21,8 @@ const PROFILE = {
   email: 'brianhcaro@gmail.com',
   linkedin: 'https://www.linkedin.com/in/brianhcaro',
   github: 'https://github.com/brianhcaro',
+  languages: ['Español (nativo)', 'Inglés (C2)'],
+  englishLevel: 'C2',
 
   // Proyectos públicos del portafolio en GitHub (fuente: repos de brianhcaro, sin forks).
   // ↑ projects: ejemplos reales de testing y desarrollo para mostrar en la analítica
