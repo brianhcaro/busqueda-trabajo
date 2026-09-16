@@ -1,8 +1,8 @@
 // Analítica del mercado y propuesta de interés: agrupa TODAS las ofertas
 // detectadas (todas las regiones), calcula qué habilidades pide el mercado,
-// las compara contra el CV de Ali Tovar y genera recomendaciones automáticas.
+// las compara contra el CV de Brian Caro y genera recomendaciones automáticas.
 // ↑ De acá sale toda la data de la página "Propuesta de Interés" del frontend.
-// ↑ Trae el perfil de Ali (skills y marketSkills) para medir la demanda y las brechas
+// ↑ Trae el perfil de Brian (skills y marketSkills) para medir la demanda y las brechas
 import { PROFILE } from './cvProfile.js';
 
 // ↑ Nombres legibles de cada región para mostrar en los resultados
@@ -49,7 +49,7 @@ function textHasSkill(text, skill) {
 function candidateSkills() {
   // ↑ Un Map evita duplicados (mismo skill en CV y en mercado) y acelera consultas
   const map = new Map();
-  // ↑ Primero entran los skills del mercado con su flag has (si Ali los tiene o no)
+  // ↑ Primero entran los skills del mercado con su flag has (si Brian los tiene o no)
   for (const ms of PROFILE.marketSkills || []) {
     map.set(ms.name, { name: ms.name, has: !!ms.has, aliases: ms.aliases });
   }
@@ -146,7 +146,7 @@ function buildRecommendations({ skillStats, missingSkills, total, byRegion, engl
   }
 
   // 6) Consejo de formato CV
-  // ↑ Toma hasta 5 skills muy demandados (>=50%) que Ali YA domina
+  // ↑ Toma hasta 5 skills muy demandados (>=50%) que Brian YA domina
   const strong = skillStats.filter((s) => s.has && s.pct >= 50).slice(0, 5);
   if (strong.length) {
     const names = strong.map((s) => s.name).join(', ');
@@ -206,9 +206,9 @@ export function buildAnalytics(regions) {
     .filter((s) => s.requested > 0)
     .sort((a, b) => b.requested - a.requested);
 
-  // ↑ Fortalezas: skills con demanda que Ali YA posee (hasta 12)
+  // ↑ Fortalezas: skills con demanda que Brian YA posee (hasta 12)
   const strongSkills = skillStats.filter((s) => s.has).slice(0, 12);
-  // ↑ Brechas: skills con demanda que Ali NO posee, ordenadas por % de demanda
+  // ↑ Brechas: skills con demanda que Brian NO posee, ordenadas por % de demanda
   const missingSkills = skillStats
     .filter((s) => !s.has)
     .map((s) => ({ name: s.name, jobsRequesting: s.requested, pct: s.pct }))

@@ -13,7 +13,7 @@ import { readFile } from 'node:fs/promises';
 import { join, extname } from 'node:path';
 // ↑ Convierte la URL del módulo actual en una ruta de carpeta válida
 import { fileURLToPath } from 'node:url';
-// ↑ Perfil estructurado de Ali (skills, keywords, regiones): se sirve en /api/profile
+// ↑ Perfil estructurado de Brian (skills, keywords, regiones): se sirve en /api/profile
 import { PROFILE } from './cvProfile.js';
 // ↑ Agregador que trae las ofertas desde las bolsas de empleo en vivo
 import { fetchJobs } from './jobSources.js';
@@ -166,7 +166,7 @@ const server = createServer(async (req, res) => {
   const url = new URL(req.url, `http://${req.headers.host}`);
 
   // ---------- API ----------
-  // ↑ Endpoint /api/profile: entrega el perfil de Ali para el panel del CV
+  // ↑ Endpoint /api/profile: entrega el perfil de Brian para el panel del CV
   if (url.pathname === '/api/profile') {
     return sendJSON(res, 200, PROFILE);
   }
@@ -285,5 +285,5 @@ const server = createServer(async (req, res) => {
 // ↑ Pone el server a escuchar: la app queda disponible en http://localhost:3000
 server.listen(PORT, () => {
   console.log(`🚀 Buscador de empleo corriendo en http://localhost:${PORT}`);
-  console.log('   Perfil: QA Engineer - Ali Tovar');
+  console.log('   Perfil: QA Analyst - Brian Caro');
 });

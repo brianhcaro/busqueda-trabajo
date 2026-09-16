@@ -1,10 +1,10 @@
 // ============================================================================
 // Motor de matching: convierte cada oferta en una oferta "rankeada".
-// Calcula el % de compatibilidad con el perfil de Ali (0-100) y le asigna
+// Calcula el % de compatibilidad con el perfil de Brian (0-100) y le asigna
 // la región a la que pertenece (Argentina, Europa, EEUU o Latam).
 // ============================================================================
 
-// ↑ Trae los skills con peso del perfil de Ali (la base del puntaje)
+// ↑ Trae los skills con peso del perfil de Brian (la base del puntaje)
 import { PROFILE } from './cvProfile.js';
 // ↑ Trae keywords base de QA y el filtro de relevancia compartido con jobSources
 import { isRelevant, BASE_KEYWORDS } from './jobSources.js';
@@ -70,7 +70,7 @@ export function computeMatch(job) {
   const matchedSet = new Set(matched.map((m) => m.skill));
 
   // Skills del MERCADO que la oferta pide (para detectar gaps de verdad)
-  // ↑ Detecta skills del mercado pedidos por la oferta; si Ali no los tiene => brecha
+  // ↑ Detecta skills del mercado pedidos por la oferta; si Brian no los tiene => brecha
   const requestedMarket = [];
   const missing = [];
   for (const ms of PROFILE.marketSkills || []) {
@@ -150,7 +150,7 @@ function assignRegion(job) {
   // ↑ Combina la ubicación declarada con la detección automática previa (regionGuess)
   const loc = `${job.location || ''} ${job.regionGuess || ''}`.toLowerCase();
   // ↑ Busca palabras clave de cada país en la ubicación de la oferta
-  const hasARG = /\b(argentina|buenos aires|bs as|capital federal)\b/.test(loc);
+  const hasARG = /\b(argentina|buenos aires|caba|ciudad autonoma de buenos aires|bs as|capital federal)\b/.test(loc);
   const hasEU = /\b(spain|espana|germany|france|netherlands|uk|united kingdom|ireland|portugal|london|berlin|madrid|europe)\b/.test(loc);
   const hasUS = /\b(usa|united states|new york|san francisco|remote[- ]?us)\b/.test(loc);
   const hasMX = /\b(mexico|cdmx|ciudad de mexico|queretaro|guadalajara|monterrey|puebla)\b/.test(loc);
@@ -158,7 +158,7 @@ function assignRegion(job) {
   const hasCO = /\b(colombia|bogota|barranquilla|medellin|cali)\b/.test(loc);
   const hasCL = /\b(chile|santiago|las condes|providencia|valparaiso|concepcion)\b/.test(loc);
 
-  // ↑ Argentina va PRIMERO por ser el país de residencia de Ali (preferencia de negocio)
+  // ↑ Argentina va PRIMERO por ser el país de residencia de Brian (preferencia de negocio)
   if (job.regionGuess === 'argentina' || hasARG) return 'argentina';
   if (job.regionGuess === 'europa' || hasEU) return 'europa';
   if (job.regionGuess === 'eeuu' || hasUS) return 'eeuu';

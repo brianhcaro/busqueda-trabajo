@@ -1,5 +1,5 @@
 // ============================================================================
-// OFERTAS CURADAS A MANO por Ali: relevadas directamente de las bolsas propias
+// OFERTAS CURADAS A MANO por Brian: relevadas directamente de las bolsas propias
 // de cada consultora (mail, portal propio, LinkedIn). Complementan a las
 // fuentes en vivo y el motor de matching les calcula el % como al resto.
 // Dato estructurado y ordenado por región.
@@ -181,7 +181,7 @@ export const CURATED_JOBS = [
     applyUrl: '',
     modality: 'Presencial en Pilar · Jornada completa (lun-vie 12:30-21:00)',
     description:
-      'Glenmark Pharmaceuticals (farmacéutica global) busca Analista Sr. QA Documentación para el equipo de Garantía de Calidad. Responsabilidades: revisión y aprobación de documentación GMP (Master BPR, BPR, SOPs, Planes de Inspección y Copias Controladas); preparación de documentación para elaboración y acondicionamiento de productos; gestión y seguimiento de validaciones de procesos, limpieza y equipos; elaboración de protocolos y reportes de validación; seguimiento y análisis de tendencias; soporte en IPQA y controles en línea; investigación de desvíos y eventos del QMS. Requisitos: estudiante avanzado o graduado de Farmacia, Química, Bioquímica, Biotecnología o Ingeniería; experiencia en industria farmacéutica en Garantía de Calidad y/o Validaciones; análisis de causa raíz (5W2H, 5M, 5 Why); SAP y/o TrackWise deseable; inglés intermedio deseable. NOTA: QA farmacéutico (no testing de software): el match con el perfil de Ali será muy bajo.',
+      'Glenmark Pharmaceuticals (farmacéutica global) busca Analista Sr. QA Documentación para el equipo de Garantía de Calidad. Responsabilidades: revisión y aprobación de documentación GMP (Master BPR, BPR, SOPs, Planes de Inspección y Copias Controladas); preparación de documentación para elaboración y acondicionamiento de productos; gestión y seguimiento de validaciones de procesos, limpieza y equipos; elaboración de protocolos y reportes de validación; seguimiento y análisis de tendencias; soporte en IPQA y controles en línea; investigación de desvíos y eventos del QMS. Requisitos: estudiante avanzado o graduado de Farmacia, Química, Bioquímica, Biotecnología o Ingeniería; experiencia en industria farmacéutica en Garantía de Calidad y/o Validaciones; análisis de causa raíz (5W2H, 5M, 5 Why); SAP y/o TrackWise deseable; inglés intermedio deseable. NOTA: QA farmacéutico (no testing de software): el match con el perfil de Brian será muy bajo.',
     tags: ['qa', 'garantía de calidad', 'gmp', 'validaciones', 'farmacéutica', 'documentación', 'qms', 'sop', 'desvíos'],
     salary: '',
     date: '2026-09-10',
@@ -196,7 +196,7 @@ export const CURATED_JOBS = [
     applyUrl: '',
     modality: '100% presencial en planta (GBA Norte) · Jornada completa',
     description:
-      'Randstad Argentina busca Analista de Calidad para una multinacional de la industria alimenticia en su planta productiva de GBA Norte (100% presencial). Objetivo: coordinar y dar seguimiento a desvíos de calidad, impulsar la mejora continua de procesos productivos y asegurar estándares de calidad e inocuidad. Responsabilidades: gestión de no conformidades de planta y proveedores, gestión de reclamos con verificación de eficacia y respuesta al cliente, cálculo de KPIs del sector, cumplimiento de normas de inocuidad/seguridad/medio ambiente. Requisitos: estudiante avanzado o graduado en Ingeniería en Alimentos, Química, Industrial, Lic. en Alimentos o Biotecnología (excluyente); 1-2 años en Calidad/Aseguramiento de Calidad/Procesos; Excel intermedio (excluyente); inglés intermedio/avanzado (excluyente). NOTA: calidad industrial alimenticia (no testing de software): match con perfil de Ali muy bajo.',
+      'Randstad Argentina busca Analista de Calidad para una multinacional de la industria alimenticia en su planta productiva de GBA Norte (100% presencial). Objetivo: coordinar y dar seguimiento a desvíos de calidad, impulsar la mejora continua de procesos productivos y asegurar estándares de calidad e inocuidad. Responsabilidades: gestión de no conformidades de planta y proveedores, gestión de reclamos con verificación de eficacia y respuesta al cliente, cálculo de KPIs del sector, cumplimiento de normas de inocuidad/seguridad/medio ambiente. Requisitos: estudiante avanzado o graduado en Ingeniería en Alimentos, Química, Industrial, Lic. en Alimentos o Biotecnología (excluyente); 1-2 años en Calidad/Aseguramiento de Calidad/Procesos; Excel intermedio (excluyente); inglés intermedio/avanzado (excluyente). NOTA: calidad industrial alimenticia (no testing de software): match con perfil de Brian muy bajo.',
     tags: ['qa', 'quality assurance', 'calidad', 'aseguramiento de calidad', 'inocuidad', 'alimentos', 'mejora continua', 'kpi', 'no conformidades'],
     salary: '',
     date: '2026-09-10',

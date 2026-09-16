@@ -1,7 +1,7 @@
 {
   "name": "busqueda-trabajo",
   "version": "1.0.0",
-  "description": "Buscador de mejores ofertas de empleo adaptadas al CV de Ali Tovar (QA Engineer)",
+  "description": "Buscador de mejores ofertas de empleo adaptadas al CV de Brian Caro (QA Analyst)",
   "type": "module",
   "main": "server/index.js",
   "scripts": {

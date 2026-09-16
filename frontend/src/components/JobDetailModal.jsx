@@ -55,7 +55,7 @@ export default function JobDetailModal({ job, summary, region, profile, onClose,
   const langIsEn = region === 'europa' || region === 'eeuu';
 
   const wanted = s.requiredSkills || [];
-  // ↑ Skills que pide la oferta y que Ali ya tiene.
+  // ↑ Skills que pide la oferta y que Brian ya tiene.
   const gaps = job.missed || [];
   // ↑ Skills que pide la oferta y NO están en el CV (brechas).
 

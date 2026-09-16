@@ -1,5 +1,5 @@
 // ============================================================================
-// PERFIL DE ALI TOVAR (QA Engineer): la "fuente de verdad" del buscador.
+// PERFIL DE BRIAN CARO (QA Analyst → QA Automation): la "fuente de verdad" del buscador.
 // Define los skills que domina (con su peso), los keywords de búsqueda, los
 // skills del mercado para detectar brechas y las regiones con su idioma.
 // El motor de matching y la analítica se apoyan en estos datos.
@@ -7,114 +7,75 @@
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
-// Datos del perfil extraídos del CV (F:\Curriculum-Vitae)
+// Datos del perfil extraídos del CV (Curriculum-Vitae de brianhcaro)
 // Esta es la fuente de verdad que usa el motor de matching.
 const PROFILE = {
-  fullName: 'Ali Valentin Tovar Morales',
-  title: 'QA Engineer',
+  fullName: 'Brian Caro',
+  title: 'QA Analyst',
   headline:
-    'QA Engineer | Manual & Automation Web y Mobile | API Testing | Azure DevOps | Atlassian',
-  location: 'Buenos Aires, Argentina',
-  yearsExperience: 8,
+    'Manual & Automation QA | Playwright · API Testing (REST/GraphQL) · Mobile & Web Testing | QA con IA',
+  location: 'Balvanera, CABA, Argentina',
+  yearsExperience: 5,
   summary:
-    'Profesional de Informática con sólida trayectoria en Quality Assurance (QA), especializado en robustez y calidad de software en sectores críticos como banca digital y fintech. Experiencia en pruebas funcionales, testing web, mobile (Android/iOS), back-end y front-end bajo metodologías ágiles (Scrum) con Jira, Xray y Azure DevOps. Desde 2026 enfocado en IA generativa y agentes inteligentes (Claude Code, Claude Design).',
-  email: '',
-  linkedin: 'https://www.linkedin.com/in/ali-v-tovar',
-  github: 'https://github.com/avtovar',
+    'QA profesional con más de 5 años de experiencia en sectores fintech y banca (Globant: Citibanamex, W. L. Gore, Mars Inc., Openbank México y YPF), especializado en pruebas funcionales, regresión y smoke, y testing de APIs (REST/GraphQL) para web y mobile bajo metodologías ágiles (Scrum). Actualmente en transición hacia QA Automation con Playwright y TypeScript, apoyado en herramientas de IA generativa (Claude, Copilot) para generar y mantener casos de prueba automatizados con mayor cobertura y menor mantenimiento.',
+  email: 'brianhcaro@gmail.com',
+  linkedin: 'https://www.linkedin.com/in/brianhcaro',
+  github: 'https://github.com/brianhcaro',
 
-  // Proyectos públicos del portafolio en GitHub (fuente: repos de avtovar, sin forks).
+  // Proyectos públicos del portafolio en GitHub (fuente: repos de brianhcaro, sin forks).
   // ↑ projects: ejemplos reales de testing y desarrollo para mostrar en la analítica
   projects: [
     {
-      nombre: 'busqueda-trabajo',
+      nombre: 'Curriculum-Vitae',
       descripcion:
-        'Buscador y analizador de vacantes QA en 7 regiones con motor de match, analítica de mercado y propuesta de interés (Node.js + Express + React/Vite).',
-      url: 'https://github.com/avtovar/busqueda-trabajo',
-      home: null,
-      lenguaje: 'JavaScript',
-    },
-    {
-      nombre: 'tiendaciudad-tests',
-      descripcion:
-        'Suite de pruebas automatizadas (TypeScript) sobre una tienda en línea: casos de compra, validaciones de formularios y flujo crítico de checkout.',
-      url: 'https://github.com/avtovar/tiendaciudad-tests',
-      home: null,
-      lenguaje: 'TypeScript',
-    },
-    {
-      nombre: 'automatizacion_pagina_brubank',
-      descripcion:
-        'Automatización web de un home banking (Brubank): pruebas de login, consultas y flujos de pago sobre un entorno fintech real.',
-      url: 'https://github.com/avtovar/automatizacion_pagina_brubank',
-      home: null,
-      lenguaje: 'HTML',
-    },
-    {
-      nombre: 'proyecto_web_para_adelgazar',
-      descripcion: 'Aplicación web completa desplegada en Vercel: frontend maquetado, persistencia y lógica de negocio.',
-      url: 'https://github.com/avtovar/proyecto_web_para_adelgazar',
-      home: 'https://proyecto-web-para-adelgazar.vercel.app',
-      lenguaje: 'JavaScript',
-    },
-    {
-      nombre: 'react',
-      descripcion: 'Ejercicios prácticos de componentes en React (estado y props) con deploy en Vercel.',
-      url: 'https://github.com/avtovar/react',
-      home: 'https://ejercicio3-liart.vercel.app',
-      lenguaje: 'HTML',
-    },
-    {
-      nombre: 'proyecto_API',
-      descripcion: 'Práctica de consumo y construcción de APIs con Python: peticiones, respuestas y manejo de endpoints.',
-      url: 'https://github.com/avtovar/proyecto_API',
-      home: null,
-      lenguaje: 'Python',
+        'Sitio personal del CV online: experiencia, skills y contacto con formulario vía EmailJS, deploy en GitHub Pages y descarga del PDF.',
+      url: 'https://github.com/brianhcaro/Curriculum-Vitae',
+      home: 'https://brianhcaro.github.io/Curriculum-Vitae/',
+      lenguaje: 'CSS',
     },
   ],
 
   // Skills con pesos (0-1) para calcular el match
-  // ↑ skills: tecnologías que Ali domina, con peso 0-1 según su importancia
+  // ↑ skills: tecnologías que Brian domina, con peso 0-1 según su importancia
   skills: {
     qa: 1,
     'manual testing': 1,
-    'automation': 1,
+    'test automation': 0.8,
+    automation: 0.7,
+    playwright: 0.7,
+    typescript: 0.6,
+    javascript: 0.5,
     'web testing': 1,
     'mobile testing': 1,
     'api testing': 1,
     'functional testing': 1,
-    'regression': 0.9,
+    regression: 1,
     'smoke testing': 0.9,
-    'gherkin': 0.8,
     'test cases': 1,
-    'test automation': 1,
-    'quality assurance': 1,
-    'rest': 0.9,
-    'graphql': 0.8,
-    'postman': 1,
-    'javascript': 0.9,
-    'python': 0.8,
-    'docker': 0.6,
-    'sql': 0.7,
-    'mysql': 0.7,
-    'agile': 0.9,
-    'scrum': 0.9,
-    'jira': 1,
-    'xray': 0.9,
-    'azure devops': 0.9,
-    'git': 0.8,
-    'github': 0.8,
-    'ci/cd': 0.7,
-    'uat': 0.8,
-    'fintech': 0.8,
-    'banking': 0.8,
-    'mobile': 0.9,
-    'ios': 0.8,
-    'android': 0.9,
-    'maestro': 0.8,
-    'ai': 0.7,
-    'ia': 0.7,
-    'llm': 0.5,
-    'generative ai': 0.5,
+    'test plans': 0.8,
+    gherkin: 0.8,
+    'black box': 0.8,
+    'white box': 0.7,
+    rest: 0.9,
+    graphql: 0.8,
+    postman: 0.9,
+    sql: 0.6,
+    jira: 1,
+    agile: 0.9,
+    scrum: 0.9,
+    git: 0.8,
+    github: 0.8,
+    'ci/cd': 0.6,
+    uat: 0.7,
+    fintech: 0.8,
+    banking: 0.8,
+    mobile: 0.9,
+    android: 0.9,
+    ios: 0.7,
+    ai: 0.6,
+    ia: 0.6,
+    'generative ai': 0.6,
+    llm: 0.5,
   },
 
   // Prioridades de búsqueda (términos para filtrar/clasificar ofertas)
@@ -124,13 +85,14 @@ const PROFILE = {
     'quality assurance',
     'software tester',
     'test engineer',
+    'qa analyst',
     'qa engineer',
     'test automation',
     'automation engineer',
+    'playwright',
     'api testing',
     'manual testing',
     'mobile testing',
-    'sdft',
     'sdet',
     'test analyst',
   ],
@@ -141,22 +103,22 @@ const PROFILE = {
   // ↑ marketSkills: lo que pide el mercado; has=false marca las brechas del CV
   marketSkills: [
     { name: 'cypress', aliases: ['cypress'], has: false },
-    { name: 'playwright', aliases: ['playwright'], has: false },
+    { name: 'playwright', aliases: ['playwright'], has: true, weight: 0.7 },
     { name: 'selenium', aliases: ['selenium'], has: false },
     { name: 'appium', aliases: ['appium'], has: false },
     { name: 'katalon', aliases: ['katalon'], has: false },
-    { name: 'docker', aliases: ['docker'], has: true, weight: 0.6 },
+    { name: 'docker', aliases: ['docker'], has: false },
     { name: 'kubernetes', aliases: ['kubernetes', 'k8s'], has: false },
-    { name: 'ci/cd', aliases: ['ci/cd', 'cicd', 'jenkins', 'github actions', 'gitlab ci'], has: false },
-    { name: 'python', aliases: ['python'], has: true, weight: 0.8 },
+    { name: 'ci/cd', aliases: ['ci/cd', 'cicd', 'jenkins', 'github actions', 'gitlab ci'], has: true, weight: 0.6 },
+    { name: 'python', aliases: ['python'], has: false },
     { name: 'java', aliases: ['java'], has: false },
-    { name: 'typescript', aliases: ['typescript', 'ts'], has: false },
-    { name: 'javascript', aliases: ['javascript', 'js'], has: true, weight: 0.9 },
+    { name: 'typescript', aliases: ['typescript', 'ts'], has: true, weight: 0.6 },
+    { name: 'javascript', aliases: ['javascript', 'js'], has: true, weight: 0.5 },
     { name: 'node.js', aliases: ['node'], has: false },
-    { name: 'sql', aliases: ['sql', 'mysql', 'postgres', 'sql server'], has: true, weight: 0.7 },
-    { name: 'postman', aliases: ['postman'], has: true, weight: 1 },
+    { name: 'sql', aliases: ['sql', 'mysql', 'postgres', 'sql server'], has: true, weight: 0.6 },
+    { name: 'postman', aliases: ['postman'], has: true, weight: 0.9 },
     { name: 'jira', aliases: ['jira'], has: true, weight: 1 },
-    { name: 'azure devops', aliases: ['azure devops', 'azure'], has: true, weight: 0.9 },
+    { name: 'azure devops', aliases: ['azure devops', 'azure'], has: false },
     { name: 'aws', aliases: ['aws'], has: false },
     { name: 'graphql', aliases: ['graphql'], has: true, weight: 0.8 },
     { name: 'rest', aliases: ['rest'], has: true, weight: 0.9 },
@@ -168,12 +130,12 @@ const PROFILE = {
     { name: 'scrum', aliases: ['scrum'], has: true, weight: 0.9 },
     { name: 'git', aliases: ['git'], has: true, weight: 0.8 },
     { name: 'fintech', aliases: ['fintech', 'banking', 'banca'], has: true, weight: 0.8 },
-    { name: 'gherkin', aliases: ['gherkin', 'bdd', 'cucumber'], has: false },
-    { name: 'ai', aliases: ['ai', 'artificial intelligence', 'generative ai', 'llm'], has: true, weight: 0.5 },
+    { name: 'gherkin', aliases: ['gherkin', 'bdd', 'cucumber'], has: true, weight: 0.8 },
+    { name: 'ai', aliases: ['ai', 'artificial intelligence', 'generative ai', 'llm'], has: true, weight: 0.6 },
     { name: 'html', aliases: ['html'], has: false },
     { name: 'css', aliases: ['css'], has: false },
     { name: 'react', aliases: ['react'], has: false },
-    { name: 'maestro', aliases: ['maestro'], has: true, weight: 0.8 },
+    { name: 'maestro', aliases: ['maestro'], has: false },
     { name: 'testrail', aliases: ['testrail'], has: false },
     { name: 'zephyr', aliases: ['zephyr'], has: false },
     { name: 'soapui', aliases: ['soapui', 'ready api', 'readyapi'], has: false },
@@ -193,7 +155,7 @@ const PROFILE = {
       label: 'Argentina',
       lang: 'es',
       countries: ['Argentina', 'AR', 'Buenos Aires'],
-      keywords: ['argentina', 'buenos aires', 'capaz federal'],
+      keywords: ['argentina', 'buenos aires', 'caba', 'capital federal'],
     },
     europa: {
       label: 'Europa',
@@ -232,8 +194,8 @@ const PROFILE = {
 // solo se usa como referencia; el perfil estructurado es la fuente principal).
 export async function loadCvPath() {
   const candidates = [
-    'F:\\Curriculum-Vitae\\Ali_Tovar_CV.pdf',
-    'F:/Curriculum-Vitae/Ali_Tovar_CV.pdf',
+    'F:\\Curriculum-Vitae\\CV Brian Caro 2026.pdf',
+    'F:/Curriculum-Vitae/CV Brian Caro 2026.pdf',
   ];
   for (const c of candidates) {
     try {

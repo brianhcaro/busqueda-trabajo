@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback } from 'react';
 //   recrean en cada render, cosa que los hijos no se re-rendericen de más).
 
 import CvPanel from './components/CvPanel.jsx';
-// ↑ Panel lateral con el CV de Ali (avatar, sobre mí, skills, enlaces).
+// ↑ Panel lateral con el CV de Brian (avatar, sobre mí, skills, enlaces).
 
 import RegionTabs from './components/RegionTabs.jsx';
 // ↑ Pestañas para cambiar de región (países) o de sección (Propuesta/Consultoras).
@@ -42,7 +42,7 @@ export default function App() {
   //   desde acá se le pasan datos y funciones (callbacks) a los hijos por props.
 
   const [profile, setProfile] = useState(null);
-  // ↑ Perfil completo de Ali (skills, contacto, etc.). Empieza en null porque aún
+  // ↑ Perfil completo de Brian (skills, contacto, etc.). Empieza en null porque aún
   //   no llegó la respuesta de la API.
 
   const [region, setRegion] = useState('argentina');
@@ -178,7 +178,7 @@ export default function App() {
       // ↑ Optional chaining: si selectedJob está null, no explota, devuelve undefined.
       setLetter({
         subject: `Postulación - ${job?.title || ''}`,
-        body: `Hola equipo de ${job?.company || ''},\n\nMe postulo a la vacante con mi CV adjunto.\n\nSaludos,\n${profile?.fullName || 'Ali Tovar'}`,
+        body: `Hola equipo de ${job?.company || ''},\n\nMe postulo a la vacante con mi CV adjunto.\n\nSaludos,\n${profile?.fullName || 'Brian Caro'}`,
       });
     }
   }
@@ -219,7 +219,7 @@ export default function App() {
       <header className="app-header">
         <div className="header-inner">
           <h1>🎯 BuscaEmpleo</h1>
-          <p className="subtitle">Las mejores ofertas para <strong>Ali Tovar</strong> · QA Engineer</p>
+          <p className="subtitle">Las mejores ofertas para <strong>Brian Caro</strong> · QA Analyst</p>
         </div>
       </header>
 

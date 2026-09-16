@@ -6,16 +6,16 @@
 // Así la pantalla nunca se queda en blanco, aunque no haya internet o server.
 export const FALLBACK = {
   profile: {
-    // ↑ Perfil "falso" de Ali por si no llega /api/profile.
-    fullName: 'Ali Valentin Tovar Morales',
-    title: 'QA Engineer',
-    headline: 'QA Engineer | Manual & Automation Web y Mobile | API Testing | Azure DevOps',
-    location: 'Buenos Aires, Argentina',
-    summary: 'Profesional QA especializado en fintech/banca. Testing web/mobile, API, automatización y metodologías ágiles con foco en IA aplicada.',
-    linkedin: 'https://www.linkedin.com/in/ali-v-tovar',
-    github: 'https://github.com/avtovar',
+    // ↑ Perfil de respaldo de Brian por si no llega /api/profile.
+    fullName: 'Brian Caro',
+    title: 'QA Analyst',
+    headline: 'Manual & Automation QA | Playwright · API Testing (REST/GraphQL) · Mobile & Web Testing | QA con IA',
+    location: 'Balvanera, CABA, Argentina',
+    summary: 'QA profesional especializado en fintech/banca. Testing funcional, API, mobile y web, con transición activa a automatización con Playwright y QA con IA.',
+    linkedin: 'https://www.linkedin.com/in/brianhcaro',
+    github: 'https://github.com/brianhcaro',
     // ↑ skills es un objeto { skill: peso }. Cada oferta se matchea contra estos pesos.
-    skills: { qa: 1, 'manual testing': 1, 'api testing': 1, mobile: 0.9, automation: 1, jira: 1, python: 0.8, javascript: 0.9, scrum: 0.9 },
+    skills: { qa: 1, 'manual testing': 1, 'api testing': 1, mobile: 0.9, playwright: 0.7, 'test automation': 0.8, jira: 1, typescript: 0.6, scrum: 0.9 },
   },
   jobs: {
     // ↑ Ofertas de ejemplo organizadas por región (mismas claves que usa la UI).

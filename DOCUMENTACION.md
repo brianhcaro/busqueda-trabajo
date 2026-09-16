@@ -1,11 +1,11 @@
 # Documentación - busqueda_trabajo
 
-Sistema web para encontrar las mejores ofertas de empleo QA adaptadas al CV de **Ali Tovar (QA Engineer)**. Un backend Node (sin framework) consulta bolsas de empleo en vivo (Remotive, Arbeitnow, Himalayas, RemoteOK, Jobicy), calcula el % de match de cada oferta contra el perfil del candidato, las clasifica por región (Argentina, México, Perú, Colombia, Chile, Europa, EE.UU.) y las muestra en un frontend React + Vite. Incluye historial de 30+ días, generador de cartas de presentación, directorio de 50 consultoras QA con tracker de contacto, y una página de "Propuesta de Interés" que compara el mercado vs. el CV y genera recomendaciones.
+Sistema web para encontrar las mejores ofertas de empleo QA adaptadas al CV de **Brian Caro (QA Analyst → QA Automation)**. Un backend Node (sin framework) consulta bolsas de empleo en vivo (Remotive, Arbeitnow, Himalayas, RemoteOK, Jobicy), calcula el % de match de cada oferta contra el perfil del candidato, las clasifica por región (Argentina, México, Perú, Colombia, Chile, Europa, EE.UU.) y las muestra en un frontend React + Vite. Incluye historial de 30+ días, generador de cartas de presentación, directorio de 50 consultoras QA con tracker de contacto, y una página de "Propuesta de Interés" que compara el mercado vs. el CV y genera recomendaciones.
 
 ## Estructura
 
 - `server/index.js` — Servidor HTTP (sin framework): sirve la API JSON y el frontend compilado (`frontend/dist`).
-- `server/cvProfile.js` — Fuente de verdad del perfil de Ali: skills con pesos, keywords, marketSkills (para detectar brechas) y regiones.
+- `server/cvProfile.js` — Fuente de verdad del perfil de Brian: skills con pesos, keywords, marketSkills (para detectar brechas) y regiones.
 - `server/jobSources.js` — Agregador de fuentes de empleo en vivo (fetch a APIs públicas) + clasificación de región y deduplicación.
 - `server/matcher.js` — Motor de matching: calcula el score 0-100 de cada oferta y asigna la región.
 - `server/analytics.js` — Analítica de mercado: demanda de skills, brechas del CV, recomendaciones automáticas (página "Propuesta de Interés").
@@ -21,7 +21,7 @@ Sistema web para encontrar las mejores ofertas de empleo QA adaptadas al CV de *
 - `frontend/src/api.js` — Capa de acceso a la API del backend, con datos de respaldo si el server está caído.
 - `frontend/src/utils.js` — Helpers: color del match, días desde una fecha, URL de búsqueda LinkedIn, clases por categoría.
 - `frontend/src/styles.css` — Todos los estilos de la app (tema oscuro, cards, modales, análisis, responsive).
-- `frontend/src/components/CvPanel.jsx` — Panel lateral con el CV de Ali (avatar, sobre mí, skills, enlaces).
+- `frontend/src/components/CvPanel.jsx` — Panel lateral con el CV de Brian (avatar, sobre mí, skills, enlaces).
 - `frontend/src/components/RegionTabs.jsx` — Pestañas de región (países + Propuesta de Interés + Consultoras).
 - `frontend/src/components/Toolbar.jsx` — Barra de acciones: actualizar búsqueda, alternar historial, buscar en LinkedIn.
 - `frontend/src/components/JobList.jsx` — Lista de tarjetas de oferta con paginación y badge de historial.
@@ -82,7 +82,7 @@ index.js  →  cvProfile.js · jobSources.js → matcher.js · coverLetter.js ·
 
 | Método | Ruta | Qué hace |
 | ------ | ---- | -------- |
-| GET | `/api/profile` | Devuelve el perfil estructurado de Ali (skills, keywords, regiones). |
+| GET | `/api/profile` | Devuelve el perfil estructurado de Brian (skills, keywords, regiones). |
 | GET | `/api/jobs?region=X` | Ofertas rankeadas de la región X (argentina, europa, eeuu, mexico, peru, colombia, chile). |
 | GET | `/api/job?q=ID` | Detalle de una oferta (por id) + resumen de empresa/skills. |
 | GET | `/api/cover-letter?region=X&id=Y` | Carta de presentación generada (es/en según la región). |
@@ -94,4 +94,4 @@ index.js  →  cvProfile.js · jobSources.js → matcher.js · coverLetter.js ·
 
 ---
 
-*Documentado por Ali Valentin Tovar Morales*
+*Adaptado por Brian Caro*

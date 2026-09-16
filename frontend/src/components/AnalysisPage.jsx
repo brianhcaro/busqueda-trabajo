@@ -1,4 +1,4 @@
-// Página "Propuesta de Interés": qué pide el mercado, qué cubre el CV de Ali,
+// Página "Propuesta de Interés": qué pide el mercado, qué cubre el CV de Brian,
 // brechas detectadas y recomendaciones de mejora. Se renderiza con barras CSS
 // (sin librerías externas) a partir del agregado /api/analytics.
 
@@ -66,7 +66,7 @@ export default function AnalysisPage({ data, profile, viewMode, refreshing, onRe
           <p>
             Análisis de las <strong>{total}</strong> vacantes QA detectadas en todas las regiones, comparadas con el CV de{' '}
             {/* ↑ {' '}: espacio "duro" en JSX para que la palabra siguiente no se pegue. */}
-            <strong>{profile?.fullName || 'Ali Tovar'}</strong>.
+            <strong>{profile?.fullName || 'Brian Caro'}</strong>.
             {/* ↑ Optional chaining: si profile es null, no explota; usa el nombre por defecto. */}
           </p>
         </div>
@@ -192,7 +192,7 @@ export default function AnalysisPage({ data, profile, viewMode, refreshing, onRe
             // ↑ Si el perfil trae GitHub, mostramos el link directo (se abre en otra pestaña).
             <a href={candidato.github} target="_blank" rel="noreferrer">{candidato.github.replace('https://', '')}</a>
           ) : (
-            'github.com/avtovar'
+            'github.com/brianhcaro'
           )}{' '}
           · repos públicos con ejemplos de testing, automatización y desarrollo.
         </p>

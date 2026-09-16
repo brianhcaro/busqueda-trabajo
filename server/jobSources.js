@@ -13,7 +13,7 @@ import { PROFILE } from './cvProfile.js';
 export const BASE_KEYWORDS = ['qa', 'quality', 'tester', 'test', 'automation', 'sdet'];
 
 // ↑ Cabeceras comunes del fetch: presentan la app y evitan que las APIs nos bloqueen
-const HEADERS = { 'User-Agent': 'Mozilla/5.0 (job-search-app; +https://github.com/avtovar)' };
+const HEADERS = { 'User-Agent': 'Mozilla/5.0 (job-search-app; +https://github.com/brianhcaro)' };
 // ↑ Tiempo máximo de espera por API: 20 segundos, después se aborta la petición
 const REQ_TIMEOUT = 20000;
 
@@ -212,7 +212,7 @@ async function fetchJobicy() {
 export function guessRegionFromText(text) {
   // ↑ Normaliza el texto a minúsculas con espacios alrededor (seguro para regex)
   const t = ` ${text || ''} `.toLowerCase();
-  const arg = /\b(argentina|buenos aires|bs as|capital federal|mar del plata|rosario|cordoba)\b/;
+  const arg = /\b(argentina|buenos aires|caba|ciudad autonoma de buenos aires|bs as|capital federal|mar del plata|rosario|cordoba)\b/;
   const us = /\b(usa|united states|new york|san francisco|los angeles|remote[- ]?us|us only|texas|california)\b/;
   const eu = /\b(spain|espana|madrid|barcelona|germany|berlin|france|paris|netherlands|amsterdam|uk|united kingdom|london|ireland|dublin|portugal|lisbon|remoto|remote eu)\b/;
   const mx = /\b(mexico|mexico|cdmx|ciudad de mexico|queretaro|guadalajara|monterrey|puebla)\b/;

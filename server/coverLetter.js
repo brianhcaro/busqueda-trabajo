@@ -4,7 +4,7 @@
 // empresa y el cuerpo de la carta listo para copiar y pegar.
 // ============================================================================
 
-// ↑ Trae el perfil de Ali (nombre, título, años de experiencia, LinkedIn)
+// ↑ Trae el perfil de Brian (nombre, título, años de experiencia, LinkedIn)
 import { PROFILE } from './cvProfile.js';
 // ↑ Recalcula el match de la oferta para listar los skills que coinciden
 import { computeMatch } from './matcher.js';

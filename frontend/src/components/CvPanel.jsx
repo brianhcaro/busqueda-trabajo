@@ -1,4 +1,4 @@
-// Componente de presentación: muestra el CV de Ali en el panel lateral.
+// Componente de presentación: muestra el CV de Brian en el panel lateral.
 // Recibe el perfil por props (lo manda App) y lo "pinta" sin guardar estado propio.
 export default function CvPanel({ profile }) {
   // ↑ Desestructuración de props: sacamos `profile` directamente en la firma,
@@ -18,7 +18,7 @@ export default function CvPanel({ profile }) {
           cv-panel (para el layout) y panel (para el estilo común). */}
 
       <div className="cv-header">
-        <div className="avatar">AT</div>
+        <div className="avatar">BC</div>
         {/* ↑ Avatar fijo con las iniciales del candidato. El círculo lo dibuja el CSS. */}
         <div>
           <h2 id="cv-name">{profile.fullName}</h2>
@@ -54,7 +54,7 @@ export default function CvPanel({ profile }) {
           {/* ↑ target="_blank" abre en pestaña nueva; rel="noopener noreferrer"
               evita que la pestaña nueva pueda manipular la anterior (seguridad). */}
           <a href={profile.github} target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="https://avtovar.github.io/Curriculum-Vitae/Ali_Tovar_CV.pdf" target="_blank" rel="noopener noreferrer">Ver CV PDF</a>
+          <a href="https://brianhcaro.github.io/Curriculum-Vitae/CV%20Brian%20Caro%202026.pdf" target="_blank" rel="noopener noreferrer">Ver CV PDF</a>
         </div>
       </div>
     </aside>
