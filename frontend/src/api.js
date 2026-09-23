@@ -15,7 +15,7 @@ export const FALLBACK = {
     linkedin: 'https://www.linkedin.com/in/brianhcaro',
     github: 'https://github.com/brianhcaro',
     // ↑ skills es un objeto { skill: peso }. Cada oferta se matchea contra estos pesos.
-    skills: { qa: 1, 'manual testing': 1, 'api testing': 1, mobile: 0.9, playwright: 0.7, 'test automation': 0.8, jira: 1, typescript: 0.6, scrum: 0.9 },
+    skills: { qa: 1, 'manual testing': 1, 'api testing': 1, mobile: 0.9, playwright: 0.7, 'test automation': 0.8, jira: 1, xray: 0.9, 'azure devops': 0.8, soapui: 0.8, browserstack: 0.8, typescript: 0.6, scrum: 0.9 },
   },
   jobs: {
     // ↑ Ofertas de ejemplo organizadas por región (mismas claves que usa la UI).

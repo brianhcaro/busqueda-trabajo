@@ -41,9 +41,9 @@ const COMPANIES = {
 function bodyEs(job, sum) {
   return `Me dirijo a ustedes para postularme a la posición de "${job.title}" en ${job.company}.
 
-Soy QA Engineer con ${PROFILE.yearsExperience}+ años de experiencia en garantía de calidad de software, especializado en banca digital y fintech. Mi trayectoria incluye pruebas funcionales, testing web y mobile (Android/iOS), API testing (REST/GraphQL), y automatización de pruebas con Maestro Studio y JavaScript.
+Soy ${PROFILE.title} con ${PROFILE.yearsExperience}+ años de experiencia en garantía de calidad de software, especializado en banca digital y fintech. Mi trayectoria incluye pruebas funcionales, testing web y mobile (Android/iOS), API testing (REST/GraphQL) y metodologías ágiles (Scrum). Actualmente estoy en transición hacia la automatización de pruebas con Playwright y TypeScript, combinando el testing manual con la generación y el mantenimiento de casos de prueba asistidos por IA.
 
-Entre mis fortalezas se encuentran: ${sum.requiredSkills.join(', ')}. Trabajo bajo metodologías ágiles (Scrum) con Jira, Xray y Azure DevOps, y desde 2026 integro IA generativa y agentes inteligentes (Claude Code) para potenciar la productividad del QA.
+Entre mis fortalezas se encuentran: ${sum.requiredSkills.join(', ')}. Trabajo con Jira, Xray y Azure DevOps, junto con herramientas de IA generativa (Claude, Copilot) para potenciar la productividad del QA. Además, cuento con inglés nivel ${PROFILE.englishLevel || 'avanzado'} (certificado EF SET), lo que me permite desenvolverme con comodidad en equipos y entornos bilingües.
 
 Adjunto mi CV y quedo a disposición para una entrevista donde pueda aportar mis conocimientos y pasión por la calidad. Pueden contactarme por LinkedIn: ${PROFILE.linkedin}.
 
@@ -58,9 +58,9 @@ ${PROFILE.location}`;
 function bodyEn(job, sum) {
   return `I am writing to apply for the position of "${job.title}" at ${job.company}.
 
-I am a QA Engineer with ${PROFILE.yearsExperience}+ years of experience in software quality assurance, specialized in digital banking and fintech. My background covers functional testing, web and mobile testing (Android/iOS), API testing (REST/GraphQL), and test automation with Maestro Studio and JavaScript.
+I am a ${PROFILE.title} with ${PROFILE.yearsExperience}+ years of experience in software quality assurance, specialized in digital banking and fintech. My background covers functional testing, web and mobile testing (Android/iOS), API testing (REST/GraphQL), and agile methodologies (Scrum). I am currently transitioning into test automation with Playwright and TypeScript, combining manual testing with AI-assisted generation and maintenance of test cases.
 
-Among my strengths are: ${sum.requiredSkills.join(', ')}. I work under agile methodologies (Scrum) using Jira, Xray and Azure DevOps, and since 2026 I have been integrating generative AI and intelligent agents (Claude Code) to boost QA productivity.
+Among my strengths are: ${sum.requiredSkills.join(', ')}. I work with Jira, Xray and Azure DevOps, along with generative AI tools (Claude, Copilot) to boost QA productivity.
 
 I am attaching my CV and I am available for an interview where I can contribute my knowledge and passion for quality. You can reach me via LinkedIn: ${PROFILE.linkedin}.
 
